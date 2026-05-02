@@ -1,40 +1,462 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FatzGonzalez Vinyl Store</title>
+
   <style>
+    :root {
+      --bg: #0f0f0f;
+      --card: #1a1a1a;
+      --card-soft: #222;
+      --text: #f5f5f5;
+      --muted: #b9b9b9;
+      --line: #333;
+      --accent: #d6a84f;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      background: #111;
-      color: #f4f4f4;
       margin: 0;
-      padding: 40px;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
     }
-    h1 {
-      font-size: 42px;
-      margin-bottom: 10px;
+
+    header {
+      padding: 48px 24px 28px;
+      text-align: center;
+      border-bottom: 1px solid var(--line);
+      background: radial-gradient(circle at top, #2a2418 0%, #111 55%);
     }
-    p {
+
+    header h1 {
+      margin: 0;
+      font-size: clamp(34px, 5vw, 64px);
+      letter-spacing: -1px;
+    }
+
+    header p {
+      margin: 12px auto 0;
+      color: var(--muted);
+      max-width: 720px;
       font-size: 18px;
-      color: #ccc;
+      line-height: 1.5;
     }
-    .box {
-      max-width: 900px;
-      margin: auto;
-      border: 1px solid #333;
-      border-radius: 16px;
-      padding: 40px;
+
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .stat {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 999px;
+      padding: 10px 16px;
+      color: #eee;
+      font-size: 14px;
+    }
+
+    main {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 28px 20px 60px;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 13px 14px;
       background: #181818;
+      border: 1px solid var(--line);
+      color: var(--text);
+      border-radius: 12px;
+      font-size: 15px;
+    }
+
+    input::placeholder {
+      color: #888;
+    }
+
+    .notice {
+      padding: 16px;
+      background: #191919;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 18px;
+    }
+
+    .record {
+      background: linear-gradient(180deg, var(--card) 0%, #141414 100%);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+    }
+
+    .record h2 {
+      margin: 0 0 6px;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+
+    .album {
+      color: var(--accent);
+      font-size: 16px;
+      margin-bottom: 14px;
+      line-height: 1.35;
+    }
+
+    .meta {
+      display: grid;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .meta div {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding-top: 8px;
+    }
+
+    .meta strong {
+      color: #e6e6e6;
+      font-weight: 600;
+    }
+
+    .price {
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .empty {
+      text-align: center;
+      color: var(--muted);
+      padding: 60px 20px;
+      border: 1px dashed var(--line);
+      border-radius: 18px;
+    }
+
+    footer {
+      text-align: center;
+      color: #777;
+      font-size: 13px;
+      padding: 30px 20px;
+      border-top: 1px solid var(--line);
+    }
+
+    @media (max-width: 850px) {
+      .controls {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        text-align: left;
+      }
+
+      .stats {
+        justify-content: flex-start;
+      }
     }
   </style>
 </head>
+
 <body>
-  <div class="box">
+  <header>
     <h1>FatzGonzalez Vinyl Store</h1>
-    <p>Vintage vinyl catalogue coming soon.</p>
-    <p>This page is working. Next step: connect it to the Google Sheet.</p>
-  </div>
+    <p>Vintage vinyl catalogue. Search by artist, album, genre, condition or price.</p>
+
+    <div class="stats">
+      <div class="stat" id="totalRecords">Loading records...</div>
+      <div class="stat" id="totalValue">Total value loading...</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="controls">
+      <input id="searchInput" type="search" placeholder="Search artist, album, genre..." />
+
+      <select id="genreFilter">
+        <option value="">All genres</option>
+      </select>
+
+      <select id="conditionFilter">
+        <option value="">All conditions</option>
+      </select>
+
+      <select id="sortSelect">
+        <option value="artist">Sort by artist</option>
+        <option value="album">Sort by album</option>
+        <option value="priceHigh">Price: high to low</option>
+        <option value="priceLow">Price: low to high</option>
+        <option value="year">Year</option>
+      </select>
+    </section>
+
+    <div class="notice" id="statusMessage">
+      Loading catalogue from Google Sheets...
+    </div>
+
+    <section class="grid" id="catalogue"></section>
+  </main>
+
+  <footer>
+    FatzGonzalez Vinyl Store
+  </footer>
+
+  <script>
+    const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRsHmSeC3rQ5Yic5vb2uH7W5Y1GH_SamcQnzQscr-3uNErTSOHQ5xRLqeOyZ71WQpoP-m8L5HjUg19N/pub?gid=0&single=true&output=csv";
+
+    let records = [];
+
+    const searchInput = document.getElementById("searchInput");
+    const genreFilter = document.getElementById("genreFilter");
+    const conditionFilter = document.getElementById("conditionFilter");
+    const sortSelect = document.getElementById("sortSelect");
+    const catalogue = document.getElementById("catalogue");
+    const statusMessage = document.getElementById("statusMessage");
+    const totalRecords = document.getElementById("totalRecords");
+    const totalValue = document.getElementById("totalValue");
+
+    function parseCSV(text) {
+      const rows = [];
+      let row = [];
+      let cell = "";
+      let insideQuotes = false;
+
+      for (let i = 0; i < text.length; i++) {
+        const char = text[i];
+        const next = text[i + 1];
+
+        if (char === '"' && insideQuotes && next === '"') {
+          cell += '"';
+          i++;
+        } else if (char === '"') {
+          insideQuotes = !insideQuotes;
+        } else if (char === "," && !insideQuotes) {
+          row.push(cell.trim());
+          cell = "";
+        } else if ((char === "\n" || char === "\r") && !insideQuotes) {
+          if (cell || row.length) {
+            row.push(cell.trim());
+            rows.push(row);
+            row = [];
+            cell = "";
+          }
+          if (char === "\r" && next === "\n") i++;
+        } else {
+          cell += char;
+        }
+      }
+
+      if (cell || row.length) {
+        row.push(cell.trim());
+        rows.push(row);
+      }
+
+      return rows;
+    }
+
+    function normaliseKey(key) {
+      return key
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9]/g, "");
+    }
+
+    function getValue(item, possibleKeys) {
+      for (const key of possibleKeys) {
+        if (item[key] && item[key].trim() !== "") return item[key].trim();
+      }
+      return "";
+    }
+
+    function priceToNumber(price) {
+      if (!price) return 0;
+      const cleaned = price
+        .replace("R$", "")
+        .replace(/\./g, "")
+        .replace(",", ".")
+        .replace(/[^\d.]/g, "");
+      return Number(cleaned) || 0;
+    }
+
+    function formatPrice(value) {
+      if (!value) return "";
+      return value;
+    }
+
+    function buildRecord(raw) {
+      return {
+        artist: getValue(raw, ["artista", "artist"]),
+        album: getValue(raw, ["album", "álbum"]),
+        artwork: getValue(raw, ["artwork", "cover", "image"]),
+        year: getValue(raw, ["ano", "year"]),
+        price: getValue(raw, ["precoreais", "preco", "price", "preçoreais"]),
+        condition: getValue(raw, ["conservacao", "condition", "conservação"]),
+        origin: getValue(raw, ["producaoorigem", "origem", "origin", "produçãoorigem"]),
+        genre: getValue(raw, ["genero", "genre", "gênero"]),
+        single: getValue(raw, ["10vinylsingle", "vinylsingle", "single"]),
+        notes: getValue(raw, ["obs", "notes"])
+      };
+    }
+
+    function renderFilters(items) {
+      const genres = [...new Set(items.map(item => item.genre).filter(Boolean))].sort();
+      const conditions = [...new Set(items.map(item => item.condition).filter(Boolean))].sort();
+
+      genres.forEach(genre => {
+        const option = document.createElement("option");
+        option.value = genre;
+        option.textContent = genre;
+        genreFilter.appendChild(option);
+      });
+
+      conditions.forEach(condition => {
+        const option = document.createElement("option");
+        option.value = condition;
+        option.textContent = condition;
+        conditionFilter.appendChild(option);
+      });
+    }
+
+    function renderStats(items) {
+      const value = items.reduce((sum, item) => sum + priceToNumber(item.price), 0);
+
+      totalRecords.textContent = `${items.length} records`;
+      totalValue.textContent = `Estimated total: R$ ${value.toLocaleString("pt-BR", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      })}`;
+    }
+
+    function renderCatalogue() {
+      const search = searchInput.value.toLowerCase().trim();
+      const selectedGenre = genreFilter.value;
+      const selectedCondition = conditionFilter.value;
+      const sortBy = sortSelect.value;
+
+      let filtered = records.filter(item => {
+        const searchable = [
+          item.artist,
+          item.album,
+          item.genre,
+          item.condition,
+          item.origin,
+          item.year,
+          item.price,
+          item.notes
+        ].join(" ").toLowerCase();
+
+        const matchesSearch = searchable.includes(search);
+        const matchesGenre = !selectedGenre || item.genre === selectedGenre;
+        const matchesCondition = !selectedCondition || item.condition === selectedCondition;
+
+        return matchesSearch && matchesGenre && matchesCondition;
+      });
+
+      filtered.sort((a, b) => {
+        if (sortBy === "priceHigh") return priceToNumber(b.price) - priceToNumber(a.price);
+        if (sortBy === "priceLow") return priceToNumber(a.price) - priceToNumber(b.price);
+        if (sortBy === "year") return String(a.year).localeCompare(String(b.year));
+        if (sortBy === "album") return String(a.album).localeCompare(String(b.album));
+        return String(a.artist).localeCompare(String(b.artist));
+      });
+
+      catalogue.innerHTML = "";
+
+      if (filtered.length === 0) {
+        catalogue.innerHTML = `<div class="empty">No records found.</div>`;
+        statusMessage.textContent = "No matching records found.";
+        return;
+      }
+
+      statusMessage.textContent = `Showing ${filtered.length} of ${records.length} records.`;
+
+      filtered.forEach(item => {
+        const card = document.createElement("article");
+        card.className = "record";
+
+        card.innerHTML = `
+          <h2>${item.artist || "Unknown artist"}</h2>
+          <div class="album">${item.album || "Untitled album"}</div>
+
+          <div class="meta">
+            ${item.year ? `<div><strong>Year</strong><span>${item.year}</span></div>` : ""}
+            ${item.price ? `<div><strong>Price</strong><span class="price">${formatPrice(item.price)}</span></div>` : ""}
+            ${item.condition ? `<div><strong>Condition</strong><span>${item.condition}</span></div>` : ""}
+            ${item.origin ? `<div><strong>Origin</strong><span>${item.origin}</span></div>` : ""}
+            ${item.genre ? `<div><strong>Genre</strong><span>${item.genre}</span></div>` : ""}
+            ${item.single ? `<div><strong>Single</strong><span>${item.single}</span></div>` : ""}
+            ${item.notes ? `<div><strong>Notes</strong><span>${item.notes}</span></div>` : ""}
+          </div>
+        `;
+
+        catalogue.appendChild(card);
+      });
+    }
+
+    async function loadCatalogue() {
+      try {
+        const response = await fetch(CSV_URL);
+        const csvText = await response.text();
+        const rows = parseCSV(csvText);
+
+        const headers = rows[0].map(normaliseKey);
+
+        records = rows.slice(1)
+          .map(row => {
+            const raw = {};
+            headers.forEach((header, index) => {
+              raw[header] = row[index] || "";
+            });
+            return buildRecord(raw);
+          })
+          .filter(item => item.artist || item.album);
+
+        renderFilters(records);
+        renderStats(records);
+        renderCatalogue();
+
+      } catch (error) {
+        console.error(error);
+        statusMessage.textContent = "Could not load the catalogue. Check the Google Sheet publishing settings.";
+        totalRecords.textContent = "Catalogue not loaded";
+        totalValue.textContent = "Check spreadsheet link";
+      }
+    }
+
+    searchInput.addEventListener("input", renderCatalogue);
+    genreFilter.addEventListener("change", renderCatalogue);
+    conditionFilter.addEventListener("change", renderCatalogue);
+    sortSelect.addEventListener("change", renderCatalogue);
+
+    loadCatalogue();
+  </script>
 </body>
 </html>
