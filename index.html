@@ -7,124 +7,370 @@
 
   <style>
     :root {
-      --bg: #0f0f0f;
-      --card: #1a1a1a;
-      --text: #f5f5f5;
-      --muted: #b9b9b9;
-      --line: #333;
-      --accent: #d6a84f;
+      --ink: #161616;
+      --cream: #fff7e8;
+      --paper: #fffdf8;
+      --yellow: #ffd84d;
+      --orange: #ff8a3d;
+      --pink: #ff4fa3;
+      --blue: #38bdf8;
+      --green: #4ade80;
+      --purple: #a78bfa;
+      --red: #fb7185;
+      --brown: #5c3a24;
+      --muted: #6b6259;
+      --line: rgba(22, 22, 22, 0.12);
+      --shadow: 0 18px 45px rgba(48, 26, 8, 0.16);
+      --radius: 24px;
     }
 
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 20%, rgba(255, 216, 77, 0.35), transparent 25%),
+        radial-gradient(circle at 90% 10%, rgba(255, 79, 163, 0.28), transparent 25%),
+        radial-gradient(circle at 80% 80%, rgba(56, 189, 248, 0.25), transparent 25%),
+        linear-gradient(135deg, #fff2c7 0%, #ffe2f0 42%, #dff7ff 100%);
+      min-height: 100vh;
     }
 
-    header {
-      padding: 48px 24px 28px;
-      text-align: center;
-      border-bottom: 1px solid var(--line);
-      background: radial-gradient(circle at top, #2a2418 0%, #111 55%);
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.22;
+      background-image:
+        linear-gradient(30deg, rgba(0,0,0,0.05) 12%, transparent 12.5%, transparent 87%, rgba(0,0,0,0.05) 87.5%, rgba(0,0,0,0.05)),
+        linear-gradient(150deg, rgba(0,0,0,0.05) 12%, transparent 12.5%, transparent 87%, rgba(0,0,0,0.05) 87.5%, rgba(0,0,0,0.05)),
+        linear-gradient(30deg, rgba(0,0,0,0.05) 12%, transparent 12.5%, transparent 87%, rgba(0,0,0,0.05) 87.5%, rgba(0,0,0,0.05)),
+        linear-gradient(150deg, rgba(0,0,0,0.05) 12%, transparent 12.5%, transparent 87%, rgba(0,0,0,0.05) 87.5%, rgba(0,0,0,0.05));
+      background-size: 80px 140px;
+      background-position: 0 0, 0 0, 40px 70px, 40px 70px;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: clamp(34px, 5vw, 64px);
-      letter-spacing: -1px;
+    .page {
+      position: relative;
+      z-index: 1;
     }
 
-    header p {
-      margin: 12px auto 0;
-      color: var(--muted);
-      max-width: 720px;
-      font-size: 18px;
-      line-height: 1.5;
+    .hero {
+      padding: 46px 20px 30px;
     }
 
-    .stats {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-top: 24px;
+    .hero-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 28px;
+      align-items: center;
     }
 
-    .stat {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
+    .hero-copy {
+      background: rgba(255, 253, 248, 0.78);
+      border: 2px solid rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(14px);
+      border-radius: 34px;
+      padding: clamp(26px, 5vw, 56px);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-copy::after {
+      content: "";
+      position: absolute;
+      right: -90px;
+      top: -90px;
+      width: 240px;
+      height: 240px;
+      background: conic-gradient(var(--pink), var(--yellow), var(--blue), var(--green), var(--pink));
+      border-radius: 50%;
+      opacity: 0.28;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--ink);
+      color: white;
       border-radius: 999px;
-      padding: 10px 16px;
-      color: #eee;
-      font-size: 14px;
+      padding: 9px 14px;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(42px, 8vw, 92px);
+      line-height: 0.9;
+      letter-spacing: -4px;
+      max-width: 760px;
+    }
+
+    .rainbow-text {
+      background: linear-gradient(90deg, var(--orange), var(--pink), var(--purple), var(--blue));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-copy p {
+      margin: 20px 0 0;
+      max-width: 700px;
+      font-size: clamp(17px, 2vw, 21px);
+      line-height: 1.55;
+      color: #3d342c;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .button {
+      border: 0;
+      border-radius: 999px;
+      padding: 13px 18px;
+      font-weight: 800;
+      font-size: 15px;
+      color: var(--ink);
+      background: var(--yellow);
+      box-shadow: 0 8px 0 rgba(0,0,0,0.14);
+      text-decoration: none;
+    }
+
+    .button.secondary {
+      background: white;
+      border: 2px solid var(--ink);
+    }
+
+    .record-art {
+      min-height: 360px;
+      border-radius: 36px;
+      background:
+        radial-gradient(circle, #171717 0 18%, transparent 18.5%),
+        conic-gradient(var(--pink), var(--yellow), var(--green), var(--blue), var(--purple), var(--pink));
+      box-shadow: var(--shadow);
+      display: grid;
+      place-items: center;
+      border: 10px solid rgba(255,255,255,0.72);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .record-art::before {
+      content: "";
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, var(--cream) 0 13%, #171717 13.5% 20%, transparent 20.5%),
+        repeating-radial-gradient(circle, #111 0 5px, #262626 6px 8px);
+      box-shadow: inset 0 0 0 14px rgba(255,255,255,0.08), 0 18px 40px rgba(0,0,0,0.35);
+    }
+
+    .record-art::after {
+      content: "VINYL";
+      position: absolute;
+      bottom: 28px;
+      left: 28px;
+      font-size: 34px;
+      font-weight: 900;
+      letter-spacing: -2px;
+      color: white;
+      text-shadow: 0 3px 0 rgba(0,0,0,0.25);
     }
 
     main {
-      max-width: 1280px;
+      max-width: 1180px;
       margin: 0 auto;
-      padding: 28px 20px 60px;
+      padding: 0 20px 70px;
+    }
+
+    .toolbar {
+      background: rgba(255, 253, 248, 0.84);
+      border: 2px solid rgba(255,255,255,0.8);
+      backdrop-filter: blur(14px);
+      border-radius: 30px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+      margin: 14px 0 22px;
+      position: sticky;
+      top: 12px;
+      z-index: 10;
     }
 
     .controls {
       display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
       gap: 12px;
-      margin-bottom: 24px;
     }
 
     input, select {
       width: 100%;
-      padding: 13px 14px;
-      background: #181818;
-      border: 1px solid var(--line);
-      color: var(--text);
-      border-radius: 12px;
+      border: 2px solid rgba(22,22,22,0.12);
+      background: white;
+      color: var(--ink);
+      border-radius: 18px;
+      padding: 14px 15px;
       font-size: 15px;
+      outline: none;
+      box-shadow: inset 0 -3px 0 rgba(0,0,0,0.05);
     }
 
-    input::placeholder {
-      color: #888;
+    input:focus, select:focus {
+      border-color: var(--pink);
+      box-shadow: 0 0 0 4px rgba(255, 79, 163, 0.15);
     }
 
-    .notice {
-      padding: 16px;
-      background: #191919;
-      border: 1px solid var(--line);
-      border-radius: 14px;
+    .status-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin: 18px 0 0;
+    }
+
+    .status-message {
       color: var(--muted);
-      margin-bottom: 20px;
+      font-size: 15px;
+      font-weight: 700;
     }
+
+    .count-pill {
+      background: var(--ink);
+      color: white;
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-size: 14px;
+      font-weight: 800;
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .quick-tags {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 0 0 22px;
+    }
+
+    .quick-tag {
+      border: 0;
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-weight: 900;
+      cursor: pointer;
+      color: var(--ink);
+      background: white;
+      box-shadow: 0 5px 0 rgba(0,0,0,0.1);
+    }
+
+    .quick-tag:nth-child(1) { background: #ffd84d; }
+    .quick-tag:nth-child(2) { background: #ff9bd2; }
+    .quick-tag:nth-child(3) { background: #8ee7ff; }
+    .quick-tag:nth-child(4) { background: #a7f3d0; }
+    .quick-tag:nth-child(5) { background: #c4b5fd; }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 18px;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 20px;
     }
 
     .record {
-      background: linear-gradient(180deg, var(--card) 0%, #141414 100%);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 18px;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+      position: relative;
+      background: var(--paper);
+      border: 2px solid rgba(22,22,22,0.1);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .record:hover {
+      transform: translateY(-5px) rotate(-0.4deg);
+      box-shadow: 0 24px 55px rgba(48, 26, 8, 0.22);
+    }
+
+    .record::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 8px;
+      background: linear-gradient(90deg, var(--pink), var(--yellow), var(--green), var(--blue), var(--purple));
+    }
+
+    .mini-disc {
+      width: 82px;
+      height: 82px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, var(--disc-colour, #ffd84d) 0 14%, #111 14.5% 25%, transparent 25.5%),
+        repeating-radial-gradient(circle, #151515 0 4px, #2b2b2b 5px 7px);
+      box-shadow: inset 0 0 0 5px rgba(255,255,255,0.08);
+      margin-bottom: 14px;
+    }
+
+    .record-top {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding-top: 10px;
+    }
+
+    .record-title {
+      flex: 1;
+      min-width: 0;
     }
 
     .record h2 {
       margin: 0 0 6px;
       font-size: 20px;
-      line-height: 1.2;
+      line-height: 1.14;
+      letter-spacing: -0.4px;
     }
 
     .album {
-      color: var(--accent);
+      color: #7a2d4d;
       font-size: 16px;
-      margin-bottom: 14px;
-      line-height: 1.35;
+      line-height: 1.3;
+      font-weight: 800;
+    }
+
+    .genre-pill {
+      display: inline-flex;
+      width: fit-content;
+      margin: 14px 0 12px;
+      border-radius: 999px;
+      padding: 8px 11px;
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      background: var(--tag-colour, #ffd84d);
+      color: var(--ink);
     }
 
     .meta {
@@ -137,96 +383,143 @@
     .meta div {
       display: flex;
       justify-content: space-between;
+      align-items: baseline;
       gap: 14px;
-      border-top: 1px solid rgba(255,255,255,0.07);
+      border-top: 1px solid var(--line);
       padding-top: 8px;
     }
 
     .meta strong {
-      color: #e6e6e6;
-      font-weight: 600;
+      color: var(--ink);
+      font-weight: 900;
+      min-width: fit-content;
     }
 
     .price {
-      color: #fff;
-      font-weight: 700;
+      color: #0f766e;
+      font-size: 16px;
+      font-weight: 900;
     }
 
     .empty {
-      text-align: center;
-      color: var(--muted);
-      padding: 60px 20px;
-      border: 1px dashed var(--line);
-      border-radius: 18px;
       grid-column: 1 / -1;
+      text-align: center;
+      padding: 60px 20px;
+      background: rgba(255,255,255,0.7);
+      border: 2px dashed rgba(22,22,22,0.2);
+      border-radius: 30px;
+      color: var(--muted);
+      font-weight: 800;
     }
 
     footer {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 20px 44px;
+      color: var(--muted);
       text-align: center;
-      color: #777;
-      font-size: 13px;
-      padding: 30px 20px;
-      border-top: 1px solid var(--line);
+      font-weight: 700;
     }
 
-    @media (max-width: 850px) {
+    .footer-card {
+      background: rgba(255, 253, 248, 0.75);
+      border-radius: 26px;
+      padding: 24px;
+      border: 2px solid rgba(255,255,255,0.7);
+    }
+
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .record-art {
+        min-height: 240px;
+      }
+
       .controls {
         grid-template-columns: 1fr;
       }
 
-      header {
-        text-align: left;
+      .toolbar {
+        position: relative;
+        top: auto;
       }
 
-      .stats {
-        justify-content: flex-start;
+      h1 {
+        letter-spacing: -2px;
       }
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <h1>FatzGonzalez Vinyl Store</h1>
-    <p>Vintage vinyl catalogue. Search by artist, album, genre, condition or price.</p>
+  <div class="page">
+    <header class="hero">
+      <div class="hero-inner">
+        <section class="hero-copy">
+          <div class="eyebrow">🎧 Vintage vinyl catalogue</div>
+          <h1>FatzGonzalez <span class="rainbow-text">Vinyl Store</span></h1>
+          <p>
+            A colourful catalogue of vintage records, rare finds, classics and collector pieces.
+            Search by artist, album, genre, condition or price.
+          </p>
 
-    <div class="stats">
-      <div class="stat" id="totalRecords">Loading records...</div>
-      <div class="stat" id="totalValue">Total value loading...</div>
-    </div>
-  </header>
+          <div class="hero-actions">
+            <a class="button" href="#catalogue">Browse records</a>
+            <a class="button secondary" href="#filters">Search catalogue</a>
+          </div>
+        </section>
 
-  <main>
-    <section class="controls">
-      <input id="searchInput" type="search" placeholder="Search artist, album, genre..." />
+        <aside class="record-art" aria-label="Colourful vinyl record artwork"></aside>
+      </div>
+    </header>
 
-      <select id="genreFilter">
-        <option value="">All genres</option>
-      </select>
+    <main>
+      <section class="toolbar" id="filters">
+        <div class="controls">
+          <input id="searchInput" type="search" placeholder="Search artist, album, genre..." />
 
-      <select id="conditionFilter">
-        <option value="">All conditions</option>
-      </select>
+          <select id="genreFilter">
+            <option value="">All genres</option>
+          </select>
 
-      <select id="sortSelect">
-        <option value="artist">Sort by artist</option>
-        <option value="album">Sort by album</option>
-        <option value="priceHigh">Price: high to low</option>
-        <option value="priceLow">Price: low to high</option>
-        <option value="year">Year</option>
-      </select>
-    </section>
+          <select id="conditionFilter">
+            <option value="">All conditions</option>
+          </select>
 
-    <div class="notice" id="statusMessage">
-      Loading catalogue from Google Sheets...
-    </div>
+          <select id="sortSelect">
+            <option value="artist">Sort by artist</option>
+            <option value="album">Sort by album</option>
+            <option value="priceHigh">Price: high to low</option>
+            <option value="priceLow">Price: low to high</option>
+            <option value="year">Year</option>
+          </select>
+        </div>
 
-    <section class="grid" id="catalogue"></section>
-  </main>
+        <div class="status-row">
+          <div class="status-message" id="statusMessage">Loading catalogue from Google Sheets...</div>
+          <div class="count-pill" id="totalRecords">Loading records...</div>
+        </div>
+      </section>
 
-  <footer>
-    FatzGonzalez Vinyl Store
-  </footer>
+      <section class="quick-tags" aria-label="Quick search buttons">
+        <button class="quick-tag" data-search="beatles">Beatles</button>
+        <button class="quick-tag" data-search="blues">Blues</button>
+        <button class="quick-tag" data-search="rock">Rock</button>
+        <button class="quick-tag" data-search="jazz">Jazz</button>
+        <button class="quick-tag" data-search="brazil">Brazil</button>
+      </section>
+
+      <section class="grid" id="catalogue"></section>
+    </main>
+
+    <footer>
+      <div class="footer-card">
+        FatzGonzalez Vinyl Store · Vintage records and collector pieces
+      </div>
+    </footer>
+  </div>
 
   <script>
     const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRsHmSeC3rQ5Yic5vb2uH7W5Y1GH_SamcQnzQscr-3uNErTSOHQ5xRLqeOyZ71WQpoP-m8L5HjUg19N/pub?gid=0&single=true&output=csv";
@@ -240,7 +533,17 @@
     const catalogue = document.getElementById("catalogue");
     const statusMessage = document.getElementById("statusMessage");
     const totalRecords = document.getElementById("totalRecords");
-    const totalValue = document.getElementById("totalValue");
+
+    const colours = [
+      "#ffd84d",
+      "#ff9bd2",
+      "#8ee7ff",
+      "#a7f3d0",
+      "#c4b5fd",
+      "#fdba74",
+      "#fda4af",
+      "#bef264"
+    ];
 
     function parseCSV(text) {
       const rows = [];
@@ -319,6 +622,17 @@
         .replace(/'/g, "&#039;");
     }
 
+    function colourFromText(text) {
+      const safeText = String(text || "record");
+      let hash = 0;
+
+      for (let i = 0; i < safeText.length; i++) {
+        hash = safeText.charCodeAt(i) + ((hash << 5) - hash);
+      }
+
+      return colours[Math.abs(hash) % colours.length];
+    }
+
     function buildRecord(raw) {
       return {
         artist: getValue(raw, ["artista", "artist"]),
@@ -357,13 +671,7 @@
     }
 
     function renderStats(items) {
-      const value = items.reduce((sum, item) => sum + priceToNumber(item.price), 0);
-
-      totalRecords.textContent = `${items.length} records`;
-      totalValue.textContent = `Estimated total: R$ ${value.toLocaleString("pt-BR", {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-      })}`;
+      totalRecords.textContent = `${items.length} records in the catalogue`;
     }
 
     function renderCatalogue() {
@@ -402,7 +710,7 @@
       catalogue.innerHTML = "";
 
       if (filtered.length === 0) {
-        catalogue.innerHTML = `<div class="empty">No records found.</div>`;
+        catalogue.innerHTML = `<div class="empty">No records found. Try another artist, genre or condition.</div>`;
         statusMessage.textContent = "No matching records found.";
         return;
       }
@@ -410,19 +718,31 @@
       statusMessage.textContent = `Showing ${filtered.length} of ${records.length} records.`;
 
       filtered.forEach(item => {
+        const tagColour = colourFromText(item.genre || item.artist);
+        const discColour = colourFromText(item.artist || item.album);
+
         const card = document.createElement("article");
         card.className = "record";
+        card.style.setProperty("--tag-colour", tagColour);
+        card.style.setProperty("--disc-colour", discColour);
 
         card.innerHTML = `
-          <h2>${escapeHTML(item.artist || "Unknown artist")}</h2>
-          <div class="album">${escapeHTML(item.album || "Untitled album")}</div>
+          <div class="record-top">
+            <div class="mini-disc" aria-hidden="true"></div>
+
+            <div class="record-title">
+              <h2>${escapeHTML(item.artist || "Unknown artist")}</h2>
+              <div class="album">${escapeHTML(item.album || "Untitled album")}</div>
+            </div>
+          </div>
+
+          ${item.genre ? `<div class="genre-pill">${escapeHTML(item.genre)}</div>` : `<div class="genre-pill">Vinyl</div>`}
 
           <div class="meta">
             ${item.year ? `<div><strong>Year</strong><span>${escapeHTML(item.year)}</span></div>` : ""}
             ${item.price ? `<div><strong>Price</strong><span class="price">${escapeHTML(item.price)}</span></div>` : ""}
             ${item.condition ? `<div><strong>Condition</strong><span>${escapeHTML(item.condition)}</span></div>` : ""}
             ${item.origin ? `<div><strong>Origin</strong><span>${escapeHTML(item.origin)}</span></div>` : ""}
-            ${item.genre ? `<div><strong>Genre</strong><span>${escapeHTML(item.genre)}</span></div>` : ""}
             ${item.single ? `<div><strong>Single</strong><span>${escapeHTML(item.single)}</span></div>` : ""}
             ${item.notes ? `<div><strong>Notes</strong><span>${escapeHTML(item.notes)}</span></div>` : ""}
           </div>
@@ -472,7 +792,6 @@
         console.error(error);
         statusMessage.textContent = "Could not load the catalogue. Check the Google Sheet publishing settings.";
         totalRecords.textContent = "Catalogue not loaded";
-        totalValue.textContent = "Check spreadsheet link";
         catalogue.innerHTML = `<div class="empty">The website loaded, but the spreadsheet data did not load.</div>`;
       }
     }
@@ -481,6 +800,14 @@
     genreFilter.addEventListener("change", renderCatalogue);
     conditionFilter.addEventListener("change", renderCatalogue);
     sortSelect.addEventListener("change", renderCatalogue);
+
+    document.querySelectorAll(".quick-tag").forEach(button => {
+      button.addEventListener("click", () => {
+        searchInput.value = button.dataset.search;
+        renderCatalogue();
+        document.getElementById("catalogue").scrollIntoView({ behavior: "smooth" });
+      });
+    });
 
     loadCatalogue();
   </script>
