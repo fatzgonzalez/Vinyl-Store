@@ -7,7 +7,7 @@
 
   <style>
     :root {
-      --ink: #161616;
+      --ink: #151515;
       --cream: #fff7e8;
       --paper: #fffdf8;
       --yellow: #ffd84d;
@@ -17,11 +17,12 @@
       --green: #4ade80;
       --purple: #a78bfa;
       --red: #fb7185;
-      --brown: #5c3a24;
+      --teal: #2dd4bf;
       --muted: #6b6259;
       --line: rgba(22, 22, 22, 0.12);
       --shadow: 0 18px 45px rgba(48, 26, 8, 0.16);
-      --radius: 24px;
+      --heavy-shadow: 0 26px 70px rgba(48, 26, 8, 0.24);
+      --radius: 26px;
     }
 
     * {
@@ -37,10 +38,11 @@
       font-family: Arial, Helvetica, sans-serif;
       color: var(--ink);
       background:
-        radial-gradient(circle at 10% 20%, rgba(255, 216, 77, 0.35), transparent 25%),
-        radial-gradient(circle at 90% 10%, rgba(255, 79, 163, 0.28), transparent 25%),
-        radial-gradient(circle at 80% 80%, rgba(56, 189, 248, 0.25), transparent 25%),
-        linear-gradient(135deg, #fff2c7 0%, #ffe2f0 42%, #dff7ff 100%);
+        radial-gradient(circle at 8% 12%, rgba(255, 216, 77, 0.45), transparent 25%),
+        radial-gradient(circle at 88% 8%, rgba(255, 79, 163, 0.32), transparent 25%),
+        radial-gradient(circle at 80% 78%, rgba(56, 189, 248, 0.30), transparent 26%),
+        radial-gradient(circle at 16% 88%, rgba(74, 222, 128, 0.28), transparent 25%),
+        linear-gradient(135deg, #fff1b8 0%, #ffe2f0 40%, #dff7ff 100%);
       min-height: 100vh;
     }
 
@@ -49,12 +51,12 @@
       position: fixed;
       inset: 0;
       pointer-events: none;
-      opacity: 0.22;
+      opacity: 0.18;
       background-image:
-        linear-gradient(30deg, rgba(0,0,0,0.05) 12%, transparent 12.5%, transparent 87%, rgba(0,0,0,0.05) 87.5%, rgba(0,0,0,0.05)),
-        linear-gradient(150deg, rgba(0,0,0,0.05) 12%, transparent 12.5%, transparent 87%, rgba(0,0,0,0.05) 87.5%, rgba(0,0,0,0.05)),
-        linear-gradient(30deg, rgba(0,0,0,0.05) 12%, transparent 12.5%, transparent 87%, rgba(0,0,0,0.05) 87.5%, rgba(0,0,0,0.05)),
-        linear-gradient(150deg, rgba(0,0,0,0.05) 12%, transparent 12.5%, transparent 87%, rgba(0,0,0,0.05) 87.5%, rgba(0,0,0,0.05));
+        linear-gradient(30deg, rgba(0,0,0,0.06) 12%, transparent 12.5%, transparent 87%, rgba(0,0,0,0.06) 87.5%, rgba(0,0,0,0.06)),
+        linear-gradient(150deg, rgba(0,0,0,0.06) 12%, transparent 12.5%, transparent 87%, rgba(0,0,0,0.06) 87.5%, rgba(0,0,0,0.06)),
+        linear-gradient(30deg, rgba(0,0,0,0.06) 12%, transparent 12.5%, transparent 87%, rgba(0,0,0,0.06) 87.5%, rgba(0,0,0,0.06)),
+        linear-gradient(150deg, rgba(0,0,0,0.06) 12%, transparent 12.5%, transparent 87%, rgba(0,0,0,0.06) 87.5%, rgba(0,0,0,0.06));
       background-size: 80px 140px;
       background-position: 0 0, 0 0, 40px 70px, 40px 70px;
     }
@@ -65,25 +67,25 @@
     }
 
     .hero {
-      padding: 46px 20px 30px;
+      padding: 44px 20px 26px;
     }
 
     .hero-inner {
-      max-width: 1180px;
+      max-width: 1200px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: 1.25fr 0.75fr;
       gap: 28px;
-      align-items: center;
+      align-items: stretch;
     }
 
     .hero-copy {
-      background: rgba(255, 253, 248, 0.78);
-      border: 2px solid rgba(255, 255, 255, 0.8);
+      background: rgba(255, 253, 248, 0.82);
+      border: 2px solid rgba(255, 255, 255, 0.82);
       backdrop-filter: blur(14px);
-      border-radius: 34px;
-      padding: clamp(26px, 5vw, 56px);
-      box-shadow: var(--shadow);
+      border-radius: 38px;
+      padding: clamp(28px, 5vw, 58px);
+      box-shadow: var(--heavy-shadow);
       position: relative;
       overflow: hidden;
     }
@@ -93,11 +95,11 @@
       position: absolute;
       right: -90px;
       top: -90px;
-      width: 240px;
-      height: 240px;
+      width: 250px;
+      height: 250px;
       background: conic-gradient(var(--pink), var(--yellow), var(--blue), var(--green), var(--pink));
       border-radius: 50%;
-      opacity: 0.28;
+      opacity: 0.30;
     }
 
     .eyebrow {
@@ -107,20 +109,24 @@
       background: var(--ink);
       color: white;
       border-radius: 999px;
-      padding: 9px 14px;
+      padding: 10px 15px;
       font-size: 13px;
-      font-weight: 800;
+      font-weight: 900;
       letter-spacing: 0.04em;
       text-transform: uppercase;
       margin-bottom: 18px;
+      position: relative;
+      z-index: 2;
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(42px, 8vw, 92px);
+      font-size: clamp(42px, 8vw, 94px);
       line-height: 0.9;
       letter-spacing: -4px;
-      max-width: 760px;
+      max-width: 780px;
+      position: relative;
+      z-index: 2;
     }
 
     .rainbow-text {
@@ -132,87 +138,152 @@
 
     .hero-copy p {
       margin: 20px 0 0;
-      max-width: 700px;
+      max-width: 720px;
       font-size: clamp(17px, 2vw, 21px);
       line-height: 1.55;
       color: #3d342c;
+      position: relative;
+      z-index: 2;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 28px;
+      margin-top: 30px;
+      position: relative;
+      z-index: 2;
     }
 
-    .button {
+    .button, .small-button {
       border: 0;
       border-radius: 999px;
-      padding: 13px 18px;
-      font-weight: 800;
+      padding: 14px 19px;
+      font-weight: 900;
       font-size: 15px;
       color: var(--ink);
       background: var(--yellow);
       box-shadow: 0 8px 0 rgba(0,0,0,0.14);
       text-decoration: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .button.secondary {
+    .button.secondary, .small-button.secondary {
       background: white;
       border: 2px solid var(--ink);
     }
 
+    .button.pink {
+      background: var(--pink);
+      color: white;
+    }
+
     .record-art {
-      min-height: 360px;
-      border-radius: 36px;
+      min-height: 390px;
+      border-radius: 38px;
       background:
         radial-gradient(circle, #171717 0 18%, transparent 18.5%),
         conic-gradient(var(--pink), var(--yellow), var(--green), var(--blue), var(--purple), var(--pink));
-      box-shadow: var(--shadow);
+      box-shadow: var(--heavy-shadow);
       display: grid;
       place-items: center;
-      border: 10px solid rgba(255,255,255,0.72);
+      border: 10px solid rgba(255,255,255,0.75);
       position: relative;
       overflow: hidden;
     }
 
     .record-art::before {
       content: "";
-      width: 250px;
-      height: 250px;
+      width: 265px;
+      height: 265px;
       border-radius: 50%;
       background:
         radial-gradient(circle, var(--cream) 0 13%, #171717 13.5% 20%, transparent 20.5%),
-        repeating-radial-gradient(circle, #111 0 5px, #262626 6px 8px);
+        repeating-radial-gradient(circle, #151515 0 5px, #2b2b2b 6px 8px);
       box-shadow: inset 0 0 0 14px rgba(255,255,255,0.08), 0 18px 40px rgba(0,0,0,0.35);
+      animation: spin 18s linear infinite;
     }
 
     .record-art::after {
-      content: "VINYL";
+      content: "DIG THE CRATE";
       position: absolute;
       bottom: 28px;
       left: 28px;
+      right: 28px;
       font-size: 34px;
-      font-weight: 900;
+      font-weight: 1000;
       letter-spacing: -2px;
       color: white;
       text-shadow: 0 3px 0 rgba(0,0,0,0.25);
     }
 
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
     main {
-      max-width: 1180px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 0 20px 70px;
     }
 
-    .toolbar {
+    .feature-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin: 8px 0 22px;
+    }
+
+    .feature-card {
       background: rgba(255, 253, 248, 0.84);
-      border: 2px solid rgba(255,255,255,0.8);
+      border: 2px solid rgba(255,255,255,0.82);
+      backdrop-filter: blur(14px);
+      border-radius: 28px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      min-height: 140px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .feature-card::after {
+      content: "";
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      right: -38px;
+      bottom: -42px;
+      border-radius: 50%;
+      background: var(--feature-colour, var(--yellow));
+      opacity: 0.55;
+    }
+
+    .feature-card h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .feature-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.45;
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
+    }
+
+    .toolbar {
+      background: rgba(255, 253, 248, 0.88);
+      border: 2px solid rgba(255,255,255,0.84);
       backdrop-filter: blur(14px);
       border-radius: 30px;
       padding: 18px;
       box-shadow: var(--shadow);
-      margin: 14px 0 22px;
+      margin: 16px 0 22px;
       position: sticky;
       top: 12px;
       z-index: 10;
@@ -220,8 +291,13 @@
 
     .controls {
       display: grid;
-      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      grid-template-columns: 1.4fr 0.9fr 0.9fr 0.9fr;
       gap: 12px;
+    }
+
+    .controls.second-row {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      margin-top: 12px;
     }
 
     input, select {
@@ -253,7 +329,7 @@
     .status-message {
       color: var(--muted);
       font-size: 15px;
-      font-weight: 700;
+      font-weight: 800;
     }
 
     .count-pill {
@@ -262,10 +338,22 @@
       border-radius: 999px;
       padding: 10px 14px;
       font-size: 14px;
-      font-weight: 800;
+      font-weight: 900;
       display: inline-flex;
       gap: 8px;
       align-items: center;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .small-button {
+      padding: 10px 13px;
+      box-shadow: 0 5px 0 rgba(0,0,0,0.12);
+      font-size: 13px;
     }
 
     .quick-tags {
@@ -279,7 +367,7 @@
       border: 0;
       border-radius: 999px;
       padding: 10px 14px;
-      font-weight: 900;
+      font-weight: 1000;
       cursor: pointer;
       color: var(--ink);
       background: white;
@@ -291,11 +379,68 @@
     .quick-tag:nth-child(3) { background: #8ee7ff; }
     .quick-tag:nth-child(4) { background: #a7f3d0; }
     .quick-tag:nth-child(5) { background: #c4b5fd; }
+    .quick-tag:nth-child(6) { background: #fdba74; }
+    .quick-tag:nth-child(7) { background: #fda4af; }
+
+    .wishlist-panel {
+      background: rgba(21, 21, 21, 0.92);
+      color: white;
+      border-radius: 30px;
+      padding: 20px;
+      box-shadow: var(--heavy-shadow);
+      margin: 0 0 22px;
+      display: none;
+    }
+
+    .wishlist-panel.show {
+      display: block;
+    }
+
+    .wishlist-panel h2 {
+      margin: 0 0 8px;
+      font-size: 26px;
+      letter-spacing: -1px;
+    }
+
+    .wishlist-panel p {
+      margin: 0 0 14px;
+      color: #ddd;
+    }
+
+    .wishlist-list {
+      display: grid;
+      gap: 8px;
+      margin: 14px 0;
+    }
+
+    .wishlist-item {
+      background: rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 11px 12px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .wishlist-item button {
+      border: 0;
+      background: var(--red);
+      color: white;
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-weight: 900;
+      cursor: pointer;
+    }
 
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
       gap: 20px;
+    }
+
+    .grid.list-view {
+      grid-template-columns: 1fr;
     }
 
     .record {
@@ -318,19 +463,8 @@
       content: "";
       position: absolute;
       inset: 0 0 auto 0;
-      height: 8px;
+      height: 9px;
       background: linear-gradient(90deg, var(--pink), var(--yellow), var(--green), var(--blue), var(--purple));
-    }
-
-    .mini-disc {
-      width: 82px;
-      height: 82px;
-      border-radius: 50%;
-      background:
-        radial-gradient(circle, var(--disc-colour, #ffd84d) 0 14%, #111 14.5% 25%, transparent 25.5%),
-        repeating-radial-gradient(circle, #151515 0 4px, #2b2b2b 5px 7px);
-      box-shadow: inset 0 0 0 5px rgba(255,255,255,0.08);
-      margin-bottom: 14px;
     }
 
     .record-top {
@@ -338,6 +472,21 @@
       gap: 14px;
       align-items: flex-start;
       padding-top: 10px;
+    }
+
+    .mini-disc {
+      width: 84px;
+      height: 84px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, var(--disc-colour, #ffd84d) 0 14%, #111 14.5% 25%, transparent 25.5%),
+        repeating-radial-gradient(circle, #151515 0 4px, #2b2b2b 5px 7px);
+      box-shadow: inset 0 0 0 5px rgba(255,255,255,0.08);
+      flex: 0 0 auto;
+    }
+
+    .record:hover .mini-disc {
+      animation: spin 2.8s linear infinite;
     }
 
     .record-title {
@@ -356,7 +505,7 @@
       color: #7a2d4d;
       font-size: 16px;
       line-height: 1.3;
-      font-weight: 800;
+      font-weight: 900;
     }
 
     .genre-pill {
@@ -366,7 +515,7 @@
       border-radius: 999px;
       padding: 8px 11px;
       font-size: 12px;
-      font-weight: 900;
+      font-weight: 1000;
       text-transform: uppercase;
       letter-spacing: 0.03em;
       background: var(--tag-colour, #ffd84d);
@@ -391,14 +540,52 @@
 
     .meta strong {
       color: var(--ink);
-      font-weight: 900;
+      font-weight: 1000;
       min-width: fit-content;
     }
 
     .price {
       color: #0f766e;
       font-size: 16px;
+      font-weight: 1000;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+
+    .card-button {
+      border: 0;
+      background: var(--ink);
+      color: white;
+      border-radius: 999px;
+      padding: 10px 12px;
       font-weight: 900;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .card-button.wishlisted {
+      background: var(--pink);
+    }
+
+    .card-button.light {
+      background: var(--yellow);
+      color: var(--ink);
+    }
+
+    .grid.list-view .record {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .grid.list-view .card-actions {
+      justify-content: flex-end;
     }
 
     .empty {
@@ -409,35 +596,60 @@
       border: 2px dashed rgba(22,22,22,0.2);
       border-radius: 30px;
       color: var(--muted);
-      font-weight: 800;
+      font-weight: 900;
+    }
+
+    .back-top {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 20;
+      border: 0;
+      background: var(--ink);
+      color: white;
+      border-radius: 999px;
+      padding: 13px 15px;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      font-weight: 900;
+      display: none;
+    }
+
+    .back-top.show {
+      display: block;
     }
 
     footer {
-      max-width: 1180px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 0 20px 44px;
       color: var(--muted);
       text-align: center;
-      font-weight: 700;
+      font-weight: 800;
     }
 
     .footer-card {
-      background: rgba(255, 253, 248, 0.75);
-      border-radius: 26px;
+      background: rgba(255, 253, 248, 0.78);
+      border-radius: 28px;
       padding: 24px;
-      border: 2px solid rgba(255,255,255,0.7);
+      border: 2px solid rgba(255,255,255,0.75);
+      box-shadow: var(--shadow);
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 980px) {
       .hero-inner {
         grid-template-columns: 1fr;
       }
 
       .record-art {
-        min-height: 240px;
+        min-height: 250px;
       }
 
-      .controls {
+      .feature-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .controls, .controls.second-row {
         grid-template-columns: 1fr;
       }
 
@@ -448,6 +660,10 @@
 
       h1 {
         letter-spacing: -2px;
+      }
+
+      .grid.list-view .record {
+        display: block;
       }
     }
   </style>
@@ -461,13 +677,14 @@
           <div class="eyebrow">🎧 Vintage vinyl catalogue</div>
           <h1>FatzGonzalez <span class="rainbow-text">Vinyl Store</span></h1>
           <p>
-            A colourful catalogue of vintage records, rare finds, classics and collector pieces.
-            Search by artist, album, genre, condition or price.
+            Dig through a colourful collection of vintage records, rare finds, classics and collector pieces.
+            Search, filter, save favourites and build your own shortlist.
           </p>
 
           <div class="hero-actions">
             <a class="button" href="#catalogue">Browse records</a>
-            <a class="button secondary" href="#filters">Search catalogue</a>
+            <button class="button pink" id="surpriseButton" type="button">Surprise me</button>
+            <button class="button secondary" id="wishlistToggle" type="button">My shortlist</button>
           </div>
         </section>
 
@@ -476,6 +693,23 @@
     </header>
 
     <main>
+      <section class="feature-panel">
+        <article class="feature-card" style="--feature-colour:#ffd84d;">
+          <h3>🎵 Browse the crates</h3>
+          <p>Explore the collection by artist, album, genre, condition, origin or price.</p>
+        </article>
+
+        <article class="feature-card" style="--feature-colour:#ff4fa3;">
+          <h3>❤️ Save favourites</h3>
+          <p>Tap “Add to shortlist” on records you like. Your shortlist stays on this device.</p>
+        </article>
+
+        <article class="feature-card" style="--feature-colour:#38bdf8;">
+          <h3>🎲 Discover something</h3>
+          <p>Use “Surprise me” when you want the site to throw a random record at you.</p>
+        </article>
+      </section>
+
       <section class="toolbar" id="filters">
         <div class="controls">
           <input id="searchInput" type="search" placeholder="Search artist, album, genre..." />
@@ -493,13 +727,39 @@
             <option value="album">Sort by album</option>
             <option value="priceHigh">Price: high to low</option>
             <option value="priceLow">Price: low to high</option>
-            <option value="year">Year</option>
+            <option value="yearNew">Newest first</option>
+            <option value="yearOld">Oldest first</option>
           </select>
+        </div>
+
+        <div class="controls second-row">
+          <select id="originFilter">
+            <option value="">All origins</option>
+          </select>
+
+          <select id="priceFilter">
+            <option value="">All prices</option>
+            <option value="0-100">Up to R$100</option>
+            <option value="100-250">R$100 to R$250</option>
+            <option value="250-500">R$250 to R$500</option>
+            <option value="500-999999">R$500+</option>
+          </select>
+
+          <select id="viewSelect">
+            <option value="grid">Grid view</option>
+            <option value="list">List view</option>
+          </select>
+
+          <button class="small-button secondary" id="resetButton" type="button">Reset filters</button>
         </div>
 
         <div class="status-row">
           <div class="status-message" id="statusMessage">Loading catalogue from Google Sheets...</div>
-          <div class="count-pill" id="totalRecords">Loading records...</div>
+
+          <div class="toolbar-actions">
+            <div class="count-pill" id="totalRecords">Loading records...</div>
+            <div class="count-pill" id="wishlistCount">0 saved</div>
+          </div>
         </div>
       </section>
 
@@ -509,6 +769,18 @@
         <button class="quick-tag" data-search="rock">Rock</button>
         <button class="quick-tag" data-search="jazz">Jazz</button>
         <button class="quick-tag" data-search="brazil">Brazil</button>
+        <button class="quick-tag" data-search="soul">Soul</button>
+        <button class="quick-tag" data-search="pink floyd">Pink Floyd</button>
+      </section>
+
+      <section class="wishlist-panel" id="wishlistPanel">
+        <h2>My shortlist</h2>
+        <p>Records you saved while browsing. This list is stored only on this browser.</p>
+        <div class="wishlist-list" id="wishlistList"></div>
+        <div class="toolbar-actions">
+          <button class="small-button" id="copyWishlistButton" type="button">Copy shortlist text</button>
+          <button class="small-button secondary" id="clearWishlistButton" type="button">Clear shortlist</button>
+        </div>
       </section>
 
       <section class="grid" id="catalogue"></section>
@@ -521,18 +793,28 @@
     </footer>
   </div>
 
+  <button class="back-top" id="backTopButton" type="button">↑ Top</button>
+
   <script>
     const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRsHmSeC3rQ5Yic5vb2uH7W5Y1GH_SamcQnzQscr-3uNErTSOHQ5xRLqeOyZ71WQpoP-m8L5HjUg19N/pub?gid=0&single=true&output=csv";
 
     let records = [];
+    let wishlist = JSON.parse(localStorage.getItem("vinylWishlist") || "[]");
 
     const searchInput = document.getElementById("searchInput");
     const genreFilter = document.getElementById("genreFilter");
     const conditionFilter = document.getElementById("conditionFilter");
+    const originFilter = document.getElementById("originFilter");
+    const priceFilter = document.getElementById("priceFilter");
     const sortSelect = document.getElementById("sortSelect");
+    const viewSelect = document.getElementById("viewSelect");
     const catalogue = document.getElementById("catalogue");
     const statusMessage = document.getElementById("statusMessage");
     const totalRecords = document.getElementById("totalRecords");
+    const wishlistCount = document.getElementById("wishlistCount");
+    const wishlistPanel = document.getElementById("wishlistPanel");
+    const wishlistList = document.getElementById("wishlistList");
+    const backTopButton = document.getElementById("backTopButton");
 
     const colours = [
       "#ffd84d",
@@ -542,7 +824,9 @@
       "#c4b5fd",
       "#fdba74",
       "#fda4af",
-      "#bef264"
+      "#bef264",
+      "#67e8f9",
+      "#f0abfc"
     ];
 
     function parseCSV(text) {
@@ -613,6 +897,11 @@
       return Number(cleaned) || 0;
     }
 
+    function yearToNumber(year) {
+      const match = String(year || "").match(/\d{4}/);
+      return match ? Number(match[0]) : 0;
+    }
+
     function escapeHTML(value) {
       return String(value || "")
         .replace(/&/g, "&amp;")
@@ -633,10 +922,14 @@
       return colours[Math.abs(hash) % colours.length];
     }
 
-    function buildRecord(raw) {
+    function buildRecord(raw, index) {
+      const artist = getValue(raw, ["artista", "artist"]);
+      const album = getValue(raw, ["album", "albun", "titulo", "title"]);
+
       return {
-        artist: getValue(raw, ["artista", "artist"]),
-        album: getValue(raw, ["album", "albun", "titulo", "title"]),
+        id: `${artist}-${album}-${index}`.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+        artist,
+        album,
         artwork: getValue(raw, ["artwork", "cover", "image", "imagem"]),
         year: getValue(raw, ["ano", "year"]),
         price: getValue(raw, ["precoreais", "preco", "price", "preçoreais"]),
@@ -651,33 +944,35 @@
     function renderFilters(items) {
       genreFilter.innerHTML = `<option value="">All genres</option>`;
       conditionFilter.innerHTML = `<option value="">All conditions</option>`;
+      originFilter.innerHTML = `<option value="">All origins</option>`;
 
       const genres = [...new Set(items.map(item => item.genre).filter(Boolean))].sort();
       const conditions = [...new Set(items.map(item => item.condition).filter(Boolean))].sort();
+      const origins = [...new Set(items.map(item => item.origin).filter(Boolean))].sort();
 
-      genres.forEach(genre => {
-        const option = document.createElement("option");
-        option.value = genre;
-        option.textContent = genre;
-        genreFilter.appendChild(option);
-      });
+      genres.forEach(genre => addOption(genreFilter, genre));
+      conditions.forEach(condition => addOption(conditionFilter, condition));
+      origins.forEach(origin => addOption(originFilter, origin));
+    }
 
-      conditions.forEach(condition => {
-        const option = document.createElement("option");
-        option.value = condition;
-        option.textContent = condition;
-        conditionFilter.appendChild(option);
-      });
+    function addOption(select, value) {
+      const option = document.createElement("option");
+      option.value = value;
+      option.textContent = value;
+      select.appendChild(option);
     }
 
     function renderStats(items) {
       totalRecords.textContent = `${items.length} records in the catalogue`;
+      wishlistCount.textContent = `${wishlist.length} saved`;
     }
 
-    function renderCatalogue() {
+    function getFilteredRecords() {
       const search = searchInput.value.toLowerCase().trim();
       const selectedGenre = genreFilter.value;
       const selectedCondition = conditionFilter.value;
+      const selectedOrigin = originFilter.value;
+      const selectedPrice = priceFilter.value;
       const sortBy = sortSelect.value;
 
       let filtered = records.filter(item => {
@@ -695,22 +990,39 @@
         const matchesSearch = searchable.includes(search);
         const matchesGenre = !selectedGenre || item.genre === selectedGenre;
         const matchesCondition = !selectedCondition || item.condition === selectedCondition;
+        const matchesOrigin = !selectedOrigin || item.origin === selectedOrigin;
 
-        return matchesSearch && matchesGenre && matchesCondition;
+        let matchesPrice = true;
+
+        if (selectedPrice) {
+          const [min, max] = selectedPrice.split("-").map(Number);
+          const price = priceToNumber(item.price);
+          matchesPrice = price >= min && price <= max;
+        }
+
+        return matchesSearch && matchesGenre && matchesCondition && matchesOrigin && matchesPrice;
       });
 
       filtered.sort((a, b) => {
         if (sortBy === "priceHigh") return priceToNumber(b.price) - priceToNumber(a.price);
         if (sortBy === "priceLow") return priceToNumber(a.price) - priceToNumber(b.price);
-        if (sortBy === "year") return String(a.year).localeCompare(String(b.year));
+        if (sortBy === "yearNew") return yearToNumber(b.year) - yearToNumber(a.year);
+        if (sortBy === "yearOld") return yearToNumber(a.year) - yearToNumber(b.year);
         if (sortBy === "album") return String(a.album).localeCompare(String(b.album));
         return String(a.artist).localeCompare(String(b.artist));
       });
 
+      return filtered;
+    }
+
+    function renderCatalogue() {
+      const filtered = getFilteredRecords();
+
+      catalogue.classList.toggle("list-view", viewSelect.value === "list");
       catalogue.innerHTML = "";
 
       if (filtered.length === 0) {
-        catalogue.innerHTML = `<div class="empty">No records found. Try another artist, genre or condition.</div>`;
+        catalogue.innerHTML = `<div class="empty">No records found. Try another artist, genre, condition or price.</div>`;
         statusMessage.textContent = "No matching records found.";
         return;
       }
@@ -720,6 +1032,7 @@
       filtered.forEach(item => {
         const tagColour = colourFromText(item.genre || item.artist);
         const discColour = colourFromText(item.artist || item.album);
+        const saved = wishlist.includes(item.id);
 
         const card = document.createElement("article");
         card.className = "record";
@@ -727,29 +1040,140 @@
         card.style.setProperty("--disc-colour", discColour);
 
         card.innerHTML = `
-          <div class="record-top">
-            <div class="mini-disc" aria-hidden="true"></div>
+          <div>
+            <div class="record-top">
+              <div class="mini-disc" aria-hidden="true"></div>
 
-            <div class="record-title">
-              <h2>${escapeHTML(item.artist || "Unknown artist")}</h2>
-              <div class="album">${escapeHTML(item.album || "Untitled album")}</div>
+              <div class="record-title">
+                <h2>${escapeHTML(item.artist || "Unknown artist")}</h2>
+                <div class="album">${escapeHTML(item.album || "Untitled album")}</div>
+              </div>
+            </div>
+
+            ${item.genre ? `<div class="genre-pill">${escapeHTML(item.genre)}</div>` : `<div class="genre-pill">Vinyl</div>`}
+
+            <div class="meta">
+              ${item.year ? `<div><strong>Year</strong><span>${escapeHTML(item.year)}</span></div>` : ""}
+              ${item.price ? `<div><strong>Price</strong><span class="price">${escapeHTML(item.price)}</span></div>` : ""}
+              ${item.condition ? `<div><strong>Condition</strong><span>${escapeHTML(item.condition)}</span></div>` : ""}
+              ${item.origin ? `<div><strong>Origin</strong><span>${escapeHTML(item.origin)}</span></div>` : ""}
+              ${item.single ? `<div><strong>Single</strong><span>${escapeHTML(item.single)}</span></div>` : ""}
+              ${item.notes ? `<div><strong>Notes</strong><span>${escapeHTML(item.notes)}</span></div>` : ""}
             </div>
           </div>
 
-          ${item.genre ? `<div class="genre-pill">${escapeHTML(item.genre)}</div>` : `<div class="genre-pill">Vinyl</div>`}
-
-          <div class="meta">
-            ${item.year ? `<div><strong>Year</strong><span>${escapeHTML(item.year)}</span></div>` : ""}
-            ${item.price ? `<div><strong>Price</strong><span class="price">${escapeHTML(item.price)}</span></div>` : ""}
-            ${item.condition ? `<div><strong>Condition</strong><span>${escapeHTML(item.condition)}</span></div>` : ""}
-            ${item.origin ? `<div><strong>Origin</strong><span>${escapeHTML(item.origin)}</span></div>` : ""}
-            ${item.single ? `<div><strong>Single</strong><span>${escapeHTML(item.single)}</span></div>` : ""}
-            ${item.notes ? `<div><strong>Notes</strong><span>${escapeHTML(item.notes)}</span></div>` : ""}
+          <div class="card-actions">
+            <button class="card-button ${saved ? "wishlisted" : ""}" data-wishlist="${escapeHTML(item.id)}">
+              ${saved ? "Saved ❤️" : "Add to shortlist"}
+            </button>
+            <button class="card-button light" data-search-artist="${escapeHTML(item.artist)}">More by artist</button>
           </div>
         `;
 
         catalogue.appendChild(card);
       });
+
+      bindCardButtons();
+    }
+
+    function bindCardButtons() {
+      document.querySelectorAll("[data-wishlist]").forEach(button => {
+        button.addEventListener("click", () => {
+          toggleWishlist(button.dataset.wishlist);
+        });
+      });
+
+      document.querySelectorAll("[data-search-artist]").forEach(button => {
+        button.addEventListener("click", () => {
+          searchInput.value = button.dataset.searchArtist;
+          renderCatalogue();
+          document.getElementById("catalogue").scrollIntoView({ behavior: "smooth" });
+        });
+      });
+    }
+
+    function toggleWishlist(id) {
+      if (wishlist.includes(id)) {
+        wishlist = wishlist.filter(savedId => savedId !== id);
+      } else {
+        wishlist.push(id);
+      }
+
+      localStorage.setItem("vinylWishlist", JSON.stringify(wishlist));
+      renderStats(records);
+      renderWishlist();
+      renderCatalogue();
+    }
+
+    function renderWishlist() {
+      wishlistList.innerHTML = "";
+
+      const savedRecords = records.filter(item => wishlist.includes(item.id));
+
+      if (savedRecords.length === 0) {
+        wishlistList.innerHTML = `<div class="wishlist-item">No records saved yet.</div>`;
+        wishlistCount.textContent = "0 saved";
+        return;
+      }
+
+      savedRecords.forEach(item => {
+        const row = document.createElement("div");
+        row.className = "wishlist-item";
+        row.innerHTML = `
+          <span>${escapeHTML(item.artist)} · ${escapeHTML(item.album)} ${item.price ? `· ${escapeHTML(item.price)}` : ""}</span>
+          <button data-remove-wishlist="${escapeHTML(item.id)}">Remove</button>
+        `;
+        wishlistList.appendChild(row);
+      });
+
+      wishlistCount.textContent = `${savedRecords.length} saved`;
+
+      document.querySelectorAll("[data-remove-wishlist]").forEach(button => {
+        button.addEventListener("click", () => {
+          toggleWishlist(button.dataset.removeWishlist);
+        });
+      });
+    }
+
+    function copyWishlistText() {
+      const savedRecords = records.filter(item => wishlist.includes(item.id));
+
+      if (savedRecords.length === 0) {
+        alert("No records saved yet.");
+        return;
+      }
+
+      const text = savedRecords.map(item => {
+        return `${item.artist} · ${item.album}${item.year ? ` · ${item.year}` : ""}${item.price ? ` · ${item.price}` : ""}`;
+      }).join("\n");
+
+      navigator.clipboard.writeText(`Hi, I am interested in these records:\n\n${text}`)
+        .then(() => alert("Shortlist copied."))
+        .catch(() => alert("Could not copy automatically. You can still manually select and copy the list."));
+    }
+
+    function resetFilters() {
+      searchInput.value = "";
+      genreFilter.value = "";
+      conditionFilter.value = "";
+      originFilter.value = "";
+      priceFilter.value = "";
+      sortSelect.value = "artist";
+      viewSelect.value = "grid";
+      renderCatalogue();
+    }
+
+    function surpriseMe() {
+      if (records.length === 0) return;
+
+      const randomRecord = records[Math.floor(Math.random() * records.length)];
+      searchInput.value = randomRecord.artist;
+      genreFilter.value = "";
+      conditionFilter.value = "";
+      originFilter.value = "";
+      priceFilter.value = "";
+      renderCatalogue();
+      document.getElementById("catalogue").scrollIntoView({ behavior: "smooth" });
     }
 
     async function loadCatalogue() {
@@ -775,17 +1199,18 @@
         const headers = rows[headerRowIndex].map(normaliseKey);
 
         records = rows.slice(headerRowIndex + 1)
-          .map(row => {
+          .map((row, index) => {
             const raw = {};
-            headers.forEach((header, index) => {
-              raw[header] = row[index] || "";
+            headers.forEach((header, columnIndex) => {
+              raw[header] = row[columnIndex] || "";
             });
-            return buildRecord(raw);
+            return buildRecord(raw, index);
           })
           .filter(item => item.artist || item.album);
 
         renderFilters(records);
         renderStats(records);
+        renderWishlist();
         renderCatalogue();
 
       } catch (error) {
@@ -799,7 +1224,29 @@
     searchInput.addEventListener("input", renderCatalogue);
     genreFilter.addEventListener("change", renderCatalogue);
     conditionFilter.addEventListener("change", renderCatalogue);
+    originFilter.addEventListener("change", renderCatalogue);
+    priceFilter.addEventListener("change", renderCatalogue);
     sortSelect.addEventListener("change", renderCatalogue);
+    viewSelect.addEventListener("change", renderCatalogue);
+
+    document.getElementById("resetButton").addEventListener("click", resetFilters);
+    document.getElementById("surpriseButton").addEventListener("click", surpriseMe);
+
+    document.getElementById("wishlistToggle").addEventListener("click", () => {
+      wishlistPanel.classList.toggle("show");
+      renderWishlist();
+      wishlistPanel.scrollIntoView({ behavior: "smooth" });
+    });
+
+    document.getElementById("copyWishlistButton").addEventListener("click", copyWishlistText);
+
+    document.getElementById("clearWishlistButton").addEventListener("click", () => {
+      wishlist = [];
+      localStorage.setItem("vinylWishlist", JSON.stringify(wishlist));
+      renderStats(records);
+      renderWishlist();
+      renderCatalogue();
+    });
 
     document.querySelectorAll(".quick-tag").forEach(button => {
       button.addEventListener("click", () => {
@@ -807,6 +1254,14 @@
         renderCatalogue();
         document.getElementById("catalogue").scrollIntoView({ behavior: "smooth" });
       });
+    });
+
+    backTopButton.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    window.addEventListener("scroll", () => {
+      backTopButton.classList.toggle("show", window.scrollY > 700);
     });
 
     loadCatalogue();
