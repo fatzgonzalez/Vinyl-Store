@@ -8,25 +8,26 @@
   <style>
     :root {
       --ink: #151515;
-      --brown: #32231a;
-      --brown-soft: #5c3a24;
-      --cream: #fff8ea;
-      --paper: #fffdf7;
-      --muted: #766c60;
-      --line: rgba(21,21,21,0.12);
+      --charcoal: #202020;
+      --cream: #fbf4e8;
+      --paper: #fffdf8;
+      --warm-white: #fffaf0;
+      --muted: #716a61;
+      --line: rgba(21,21,21,0.11);
 
-      --mustard: #f5c94c;
-      --orange: #e97835;
-      --pink: #d94f84;
-      --teal: #2cae9b;
-      --blue: #438fc8;
-      --green: #6cae68;
+      --mustard: #e9bf45;
+      --terracotta: #c96b3a;
+      --rose: #c9577d;
+      --sage: #789b75;
+      --teal: #287d78;
+      --blue: #4c83a8;
+      --wine: #7d304c;
 
-      --shadow: 0 18px 48px rgba(47, 31, 16, 0.14);
-      --shadow-soft: 0 10px 28px rgba(47, 31, 16, 0.10);
+      --shadow: 0 18px 48px rgba(35, 27, 19, 0.13);
+      --shadow-soft: 0 10px 28px rgba(35, 27, 19, 0.09);
 
-      --radius-xl: 34px;
-      --radius-lg: 26px;
+      --radius-xl: 32px;
+      --radius-lg: 24px;
       --radius-md: 18px;
 
       --max: 1240px;
@@ -45,10 +46,10 @@
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
       color: var(--ink);
       background:
-        radial-gradient(circle at 10% 8%, rgba(245, 201, 76, 0.30), transparent 26%),
-        radial-gradient(circle at 88% 10%, rgba(217, 79, 132, 0.18), transparent 26%),
-        radial-gradient(circle at 84% 72%, rgba(44, 174, 155, 0.16), transparent 30%),
-        linear-gradient(135deg, #fff9ec 0%, #f7eee5 48%, #edf7f4 100%);
+        radial-gradient(circle at 12% 8%, rgba(233, 191, 69, 0.20), transparent 27%),
+        radial-gradient(circle at 88% 12%, rgba(201, 107, 58, 0.13), transparent 28%),
+        radial-gradient(circle at 82% 70%, rgba(40, 125, 120, 0.12), transparent 30%),
+        linear-gradient(135deg, #fbf4e8 0%, #f8f0e6 46%, #eef5f2 100%);
       min-height: 100vh;
     }
 
@@ -57,12 +58,12 @@
       position: fixed;
       inset: 0;
       pointer-events: none;
-      opacity: 0.11;
+      opacity: 0.08;
       background-image:
-        linear-gradient(90deg, rgba(21,21,21,0.06) 1px, transparent 1px),
-        linear-gradient(rgba(21,21,21,0.045) 1px, transparent 1px);
-      background-size: 46px 46px;
-      mask-image: linear-gradient(to bottom, black, transparent 70%);
+        linear-gradient(90deg, rgba(21,21,21,0.08) 1px, transparent 1px),
+        linear-gradient(rgba(21,21,21,0.06) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(to bottom, black, transparent 68%);
     }
 
     button,
@@ -90,7 +91,7 @@
       top: 0;
       z-index: 80;
       backdrop-filter: blur(18px);
-      background: rgba(255, 248, 234, 0.78);
+      background: rgba(251, 244, 232, 0.82);
       border-bottom: 1px solid rgba(21,21,21,0.08);
     }
 
@@ -128,7 +129,7 @@
 
     .brand-sub {
       color: var(--muted);
-      font-weight: 800;
+      font-weight: 780;
       font-size: 12px;
       margin-top: 1px;
     }
@@ -153,12 +154,12 @@
       justify-content: center;
       gap: 8px;
       text-decoration: none;
-      box-shadow: 0 7px 0 rgba(21,21,21,0.12);
+      box-shadow: 0 7px 0 rgba(21,21,21,0.10);
       line-height: 1;
     }
 
     .btn.light {
-      background: rgba(255,255,255,0.78);
+      background: rgba(255,255,255,0.80);
       color: var(--ink);
       border: 1px solid var(--line);
       box-shadow: none;
@@ -169,8 +170,8 @@
       color: var(--ink);
     }
 
-    .btn.pink {
-      background: var(--pink);
+    .btn.rose {
+      background: var(--rose);
       color: white;
     }
 
@@ -192,12 +193,12 @@
     }
 
     .hero-copy {
-      min-height: 420px;
+      min-height: 395px;
       border-radius: var(--radius-xl);
       padding: clamp(28px, 5vw, 52px);
       background:
-        linear-gradient(145deg, rgba(255,255,255,0.82), rgba(255,246,224,0.76)),
-        radial-gradient(circle at 88% 8%, rgba(217,79,132,0.18), transparent 26%);
+        linear-gradient(145deg, rgba(255,255,255,0.86), rgba(255,248,235,0.80)),
+        radial-gradient(circle at 88% 8%, rgba(201,107,58,0.13), transparent 26%);
       border: 1px solid rgba(255,255,255,0.88);
       box-shadow: var(--shadow);
       display: flex;
@@ -215,8 +216,8 @@
       width: 250px;
       height: 250px;
       border-radius: 50%;
-      background: conic-gradient(var(--orange), var(--pink), var(--mustard), var(--teal), var(--orange));
-      opacity: 0.15;
+      background: conic-gradient(var(--terracotta), var(--rose), var(--mustard), var(--teal), var(--terracotta));
+      opacity: 0.12;
     }
 
     .eyebrow {
@@ -235,25 +236,28 @@
 
     h1 {
       margin: 20px 0 0;
-      font-size: clamp(44px, 7.4vw, 86px);
-      line-height: 0.9;
-      letter-spacing: -0.075em;
+      font-size: clamp(43px, 7vw, 82px);
+      line-height: 0.91;
+      letter-spacing: -0.07em;
       position: relative;
       z-index: 1;
     }
 
     .colour-title {
-      background: linear-gradient(90deg, var(--orange), var(--pink), var(--blue), var(--teal));
+      display: inline-block;
+      font-size: 0.965em;
+      background: linear-gradient(90deg, var(--terracotta), var(--rose), var(--blue), var(--teal));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      padding-right: 0.04em;
     }
 
     .hero-copy p {
       margin: 20px 0 0;
       max-width: 630px;
       color: #40372f;
-      font-size: clamp(16px, 1.8vw, 20px);
+      font-size: clamp(16px, 1.75vw, 19px);
       line-height: 1.55;
       font-weight: 650;
       position: relative;
@@ -270,11 +274,11 @@
     }
 
     .hero-visual {
-      min-height: 420px;
+      min-height: 395px;
       border-radius: var(--radius-xl);
       background:
-        linear-gradient(145deg, rgba(21,21,21,0.96), rgba(51,36,25,0.94)),
-        radial-gradient(circle at 80% 10%, rgba(245,201,76,0.15), transparent 28%);
+        linear-gradient(145deg, rgba(21,21,21,0.96), rgba(46,36,28,0.94)),
+        radial-gradient(circle at 80% 10%, rgba(233,191,69,0.13), transparent 28%);
       box-shadow: var(--shadow);
       padding: 18px;
       position: relative;
@@ -287,8 +291,8 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at 20% 80%, rgba(67,143,200,0.16), transparent 30%),
-        radial-gradient(circle at 88% 18%, rgba(233,120,53,0.16), transparent 26%);
+        radial-gradient(circle at 20% 80%, rgba(76,131,168,0.13), transparent 30%),
+        radial-gradient(circle at 88% 18%, rgba(201,107,58,0.13), transparent 26%);
       pointer-events: none;
     }
 
@@ -334,7 +338,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: 0 18px 42px rgba(0,0,0,0.24);
+      box-shadow: 0 18px 42px rgba(0,0,0,0.22);
       transform: rotate(var(--tilt, 0deg));
       background: var(--cover-bg);
       background-size: cover;
@@ -358,7 +362,7 @@
       right: -26px;
       bottom: -30px;
       background:
-        radial-gradient(circle, rgba(255,255,255,0.85) 0 13%, #151515 14% 29%, transparent 30%),
+        radial-gradient(circle, rgba(255,255,255,0.86) 0 13%, #151515 14% 29%, transparent 30%),
         repeating-radial-gradient(circle, #151515 0 4px, #303030 5px 7px);
       opacity: 0.92;
     }
@@ -405,12 +409,12 @@
       box-shadow: 0 8px 20px rgba(21,21,21,0.08);
     }
 
-    .chip:nth-child(1) { background: #fff0aa; }
-    .chip:nth-child(2) { background: #ffd5e8; }
-    .chip:nth-child(3) { background: #d8f3ea; }
-    .chip:nth-child(4) { background: #d7e9ff; }
-    .chip:nth-child(5) { background: #ffe0c4; }
-    .chip:nth-child(6) { background: #e8ddff; }
+    .chip:nth-child(1) { background: #f5e5a0; }
+    .chip:nth-child(2) { background: #ead0da; }
+    .chip:nth-child(3) { background: #d7e7dc; }
+    .chip:nth-child(4) { background: #d7e1ea; }
+    .chip:nth-child(5) { background: #ead8c7; }
+    .chip:nth-child(6) { background: #e3d9ea; }
 
     .stats-strip {
       display: grid;
@@ -437,7 +441,7 @@
 
     .stat-value {
       margin-top: 7px;
-      font-size: 27px;
+      font-size: 26px;
       font-weight: 950;
       letter-spacing: -0.055em;
       white-space: nowrap;
@@ -450,51 +454,6 @@
       color: var(--muted);
       font-size: 13px;
       font-weight: 800;
-    }
-
-    .how-it-works {
-      margin: 18px 0 8px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-
-    .how-card {
-      border-radius: 22px;
-      background: rgba(255,255,255,0.64);
-      border: 1px solid rgba(255,255,255,0.82);
-      box-shadow: var(--shadow-soft);
-      padding: 16px;
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-    }
-
-    .how-number {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: var(--ink);
-      color: white;
-      display: grid;
-      place-items: center;
-      font-weight: 950;
-      flex: 0 0 auto;
-    }
-
-    .how-card strong {
-      display: block;
-      font-weight: 950;
-      letter-spacing: -0.03em;
-    }
-
-    .how-card span {
-      display: block;
-      margin-top: 4px;
-      color: var(--muted);
-      font-size: 14px;
-      font-weight: 750;
-      line-height: 1.35;
     }
 
     .section-head {
@@ -576,6 +535,9 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      border: 0;
+      width: 100%;
+      text-align: left;
     }
 
     .feature-cover::before {
@@ -746,7 +708,7 @@
       border: 0;
       border-radius: 999px;
       padding: 7px 10px;
-      background: var(--pink);
+      background: var(--rose);
       color: white;
       font-weight: 900;
     }
@@ -792,6 +754,8 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      border: 0;
+      text-align: left;
     }
 
     .record-cover::before {
@@ -866,7 +830,7 @@
 
     .album-name {
       margin-top: 6px;
-      color: #7a3151;
+      color: var(--wine);
       font-weight: 900;
       line-height: 1.22;
     }
@@ -935,7 +899,7 @@
     }
 
     .card-btn.saved {
-      background: var(--pink);
+      background: var(--rose);
     }
 
     .grid.list-view .record {
@@ -1052,8 +1016,8 @@
 
     .drawer input:focus,
     .drawer select:focus {
-      border-color: var(--pink);
-      box-shadow: 0 0 0 4px rgba(217,79,132,0.12);
+      border-color: var(--rose);
+      box-shadow: 0 0 0 4px rgba(201,87,125,0.12);
     }
 
     .drawer-actions {
@@ -1148,7 +1112,7 @@
 
     .modal-album {
       margin-top: 10px;
-      color: #7a3151;
+      color: var(--wine);
       font-size: 22px;
       font-weight: 950;
       line-height: 1.1;
@@ -1230,7 +1194,6 @@
       }
 
       .stats-strip,
-      .how-it-works,
       .feature-row {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -1259,7 +1222,7 @@
       }
 
       h1 {
-        letter-spacing: -0.06em;
+        letter-spacing: -0.058em;
       }
 
       .cover-wall {
@@ -1271,7 +1234,6 @@
       }
 
       .stats-strip,
-      .how-it-works,
       .feature-row {
         grid-template-columns: 1fr;
       }
@@ -1320,7 +1282,7 @@
 
   <aside class="drawer" id="filterDrawer" aria-label="Search and filter menu">
     <div class="drawer-head">
-      <h2>Search the crates</h2>
+      <h2>Search records</h2>
       <button class="close-btn" id="closeFiltersButton" type="button">×</button>
     </div>
 
@@ -1419,12 +1381,12 @@
             <h1>FatzGonzalez <span class="colour-title">Vinyl Store</span></h1>
             <p>
               Browse vintage records, Brazilian classics, blues, rock, jazz and collector pieces.
-              Save favourites, build a shortlist and send an enquiry.
+              A clean catalogue built for digging, discovering and saving favourites.
             </p>
 
             <div class="hero-actions">
               <a class="btn mustard" href="#catalogue">Browse records</a>
-              <button class="btn pink" id="surpriseButton" type="button">Surprise me</button>
+              <button class="btn rose" id="surpriseButton" type="button">Surprise me</button>
               <button class="btn light" id="openFiltersButtonHero" type="button">Search catalogue</button>
             </div>
 
@@ -1440,7 +1402,7 @@
 
           <aside class="hero-visual" aria-label="Featured records from the catalogue">
             <div class="shop-sign">
-              <strong>Now browsing</strong>
+              <strong>Featured records</strong>
               <span>Live from the catalogue</span>
             </div>
             <div class="cover-wall" id="heroCoverWall"></div>
@@ -1455,7 +1417,7 @@
           </article>
 
           <article class="stat">
-            <div class="stat-label">Biggest crate</div>
+            <div class="stat-label">Main style</div>
             <div class="stat-value" id="statTopGenre">...</div>
             <div class="stat-note" id="statTopGenreCount">loading</div>
           </article>
@@ -1472,32 +1434,6 @@
             <div class="stat-note">on this device</div>
           </article>
         </section>
-
-        <section class="how-it-works">
-          <article class="how-card">
-            <div class="how-number">1</div>
-            <div>
-              <strong>Browse the crates</strong>
-              <span>Search by artist, album, genre, condition, origin or price.</span>
-            </div>
-          </article>
-
-          <article class="how-card">
-            <div class="how-number">2</div>
-            <div>
-              <strong>Save favourites</strong>
-              <span>Add records to your shortlist while you explore the catalogue.</span>
-            </div>
-          </article>
-
-          <article class="how-card">
-            <div class="how-number">3</div>
-            <div>
-              <strong>Send an enquiry</strong>
-              <span>Copy your shortlist and send it to ask about availability.</span>
-            </div>
-          </article>
-        </section>
       </div>
     </header>
 
@@ -1505,8 +1441,8 @@
       <div class="container">
         <section>
           <div class="section-head">
-            <h2>Popular crates</h2>
-            <p>Jump straight into the strongest categories in the collection.</p>
+            <h2>Browse by genre</h2>
+            <p>Start with the strongest styles in the collection.</p>
           </div>
           <div class="genre-row" id="topGenres"></div>
         </section>
@@ -1514,7 +1450,7 @@
         <section>
           <div class="section-head">
             <h2>Collector picks</h2>
-            <p>Featured pieces selected automatically from higher-interest records in the catalogue.</p>
+            <p>Featured pieces selected automatically from higher-interest records.</p>
           </div>
           <div class="feature-row" id="collectorPicks"></div>
         </section>
@@ -1522,7 +1458,7 @@
         <section>
           <div class="section-head">
             <h2>Recently added</h2>
-            <p>Records near the end of the spreadsheet, useful as your friend keeps adding new stock.</p>
+            <p>Records near the end of the spreadsheet, useful as new stock is added.</p>
           </div>
           <div class="feature-row" id="recentlyAdded"></div>
         </section>
@@ -1577,7 +1513,6 @@
     let records = [];
     let wishlist = JSON.parse(localStorage.getItem("vinylWishlist") || "[]");
     let visibleCount = 120;
-    let activeModalRecord = null;
 
     const searchInput = document.getElementById("searchInput");
     const genreFilter = document.getElementById("genreFilter");
@@ -1607,14 +1542,14 @@
     const modalCard = document.getElementById("modalCard");
 
     const colourPairs = [
-      ["#e97835", "#d94f84"],
-      ["#438fc8", "#2cae9b"],
-      ["#f5c94c", "#9b6ed6"],
-      ["#d94f84", "#e7a547"],
-      ["#2cae9b", "#438fc8"],
-      ["#151515", "#6a4a32"],
-      ["#5c3a24", "#dd8b53"],
-      ["#6cae68", "#f5c94c"]
+      ["#c96b3a", "#c9577d"],
+      ["#4c83a8", "#287d78"],
+      ["#e9bf45", "#8b6fb7"],
+      ["#c9577d", "#d99248"],
+      ["#287d78", "#4c83a8"],
+      ["#151515", "#645142"],
+      ["#5c3a24", "#c8794f"],
+      ["#789b75", "#e9bf45"]
     ];
 
     function parseCSV(text) {
@@ -1931,6 +1866,7 @@
       }
 
       picks.forEach(item => collectorPicks.appendChild(createFeatureCard(item)));
+      bindDynamicButtons();
     }
 
     function renderRecentlyAdded() {
@@ -1943,6 +1879,7 @@
         .slice(0, 4);
 
       recent.forEach(item => recentlyAdded.appendChild(createFeatureCard(item)));
+      bindDynamicButtons();
     }
 
     function getFilteredRecords() {
@@ -2078,17 +2015,17 @@
 
     function bindDynamicButtons() {
       document.querySelectorAll("[data-wishlist]").forEach(button => {
-        button.addEventListener("click", event => {
+        button.onclick = event => {
           event.stopPropagation();
           toggleWishlist(button.dataset.wishlist);
-        });
+        };
       });
 
       document.querySelectorAll("[data-open-record]").forEach(button => {
-        button.addEventListener("click", event => {
+        button.onclick = event => {
           event.stopPropagation();
           openRecordModal(button.dataset.openRecord);
-        });
+        };
       });
     }
 
@@ -2127,7 +2064,7 @@
       });
 
       document.querySelectorAll("[data-remove-wishlist]").forEach(button => {
-        button.addEventListener("click", () => toggleWishlist(button.dataset.removeWishlist));
+        button.onclick = () => toggleWishlist(button.dataset.removeWishlist);
       });
 
       renderStats();
@@ -2154,8 +2091,6 @@
       const item = records.find(record => record.id === id);
       if (!item) return;
 
-      activeModalRecord = item;
-
       const saved = wishlist.includes(item.id);
 
       modalCard.innerHTML = `
@@ -2180,11 +2115,11 @@
           </div>
 
           <div class="drawer-actions">
-            <button class="btn ${saved ? "pink" : "mustard"}" id="modalWishlistButton" type="button">
+            <button class="btn ${saved ? "rose" : "mustard"}" id="modalWishlistButton" type="button">
               ${saved ? "Saved ❤️" : "Add to shortlist"}
             </button>
             <button class="btn light" id="modalArtistButton" type="button">More by this artist</button>
-            <button class="btn light" id="modalCopyButton" type="button">Copy enquiry</button>
+            <button class="btn light" id="modalCopyButton" type="button">Copy details</button>
           </div>
         </div>
       `;
@@ -2194,33 +2129,32 @@
 
       recordModal.classList.add("show");
 
-      document.getElementById("closeModalButton").addEventListener("click", closeRecordModal);
+      document.getElementById("closeModalButton").onclick = closeRecordModal;
 
-      document.getElementById("modalWishlistButton").addEventListener("click", () => {
+      document.getElementById("modalWishlistButton").onclick = () => {
         toggleWishlist(item.id);
         openRecordModal(item.id);
-      });
+      };
 
-      document.getElementById("modalArtistButton").addEventListener("click", () => {
+      document.getElementById("modalArtistButton").onclick = () => {
         closeRecordModal();
         resetFilters(false);
         searchInput.value = item.artist;
         visibleCount = 120;
         renderCatalogue();
         document.getElementById("catalogue").scrollIntoView({ behavior: "smooth" });
-      });
+      };
 
-      document.getElementById("modalCopyButton").addEventListener("click", () => {
-        const text = `Hi, I am interested in this record:\n\n${item.artist} · ${item.album}${item.year ? ` · ${item.year}` : ""}${item.price ? ` · ${item.price}` : ""}`;
+      document.getElementById("modalCopyButton").onclick = () => {
+        const text = `${item.artist} · ${item.album}${item.year ? ` · ${item.year}` : ""}${item.price ? ` · ${item.price}` : ""}`;
         navigator.clipboard.writeText(text)
-          .then(() => alert("Enquiry copied."))
+          .then(() => alert("Record details copied."))
           .catch(() => alert("Could not copy automatically."));
-      });
+      };
     }
 
     function closeRecordModal() {
       recordModal.classList.remove("show");
-      activeModalRecord = null;
     }
 
     function resetFilters(shouldRender = true) {
