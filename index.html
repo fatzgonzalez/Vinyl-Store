@@ -7,30 +7,33 @@
 
   <style>
     :root {
-      --ink: #151515;
-      --charcoal: #202020;
-      --cream: #fbf4e8;
-      --paper: #fffdf8;
-      --warm-white: #fffaf0;
-      --muted: #716a61;
-      --line: rgba(21,21,21,0.11);
+      --ink: #17191d;
+      --ink-soft: #2a2f36;
+      --text-muted: #69727d;
+      --line: rgba(23, 25, 29, 0.10);
 
-      --mustard: #e9bf45;
-      --terracotta: #c96b3a;
-      --rose: #c9577d;
-      --sage: #789b75;
+      --bg-1: #f6f8fb;
+      --bg-2: #eef3f8;
+      --bg-3: #f9fbfd;
+      --panel: rgba(255, 255, 255, 0.74);
+      --panel-strong: rgba(255, 255, 255, 0.88);
+
+      --navy: #284b72;
+      --blue: #4a7bb4;
       --teal: #287d78;
-      --blue: #4c83a8;
-      --wine: #7d304c;
+      --sage: #7e9f84;
+      --gold: #d7ab45;
+      --coral: #c96a4e;
+      --rose: #b85b7b;
 
-      --shadow: 0 18px 48px rgba(35, 27, 19, 0.13);
-      --shadow-soft: 0 10px 28px rgba(35, 27, 19, 0.09);
+      --shadow: 0 20px 54px rgba(32, 42, 56, 0.12);
+      --shadow-soft: 0 10px 28px rgba(32, 42, 56, 0.08);
 
-      --radius-xl: 32px;
+      --radius-xl: 30px;
       --radius-lg: 24px;
       --radius-md: 18px;
 
-      --max: 1240px;
+      --max: 1260px;
     }
 
     * {
@@ -38,6 +41,7 @@
     }
 
     html {
+      scroll-behaviour: smooth;
       scroll-behavior: smooth;
     }
 
@@ -46,10 +50,10 @@
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
       color: var(--ink);
       background:
-        radial-gradient(circle at 12% 8%, rgba(233, 191, 69, 0.20), transparent 27%),
-        radial-gradient(circle at 88% 12%, rgba(201, 107, 58, 0.13), transparent 28%),
-        radial-gradient(circle at 82% 70%, rgba(40, 125, 120, 0.12), transparent 30%),
-        linear-gradient(135deg, #fbf4e8 0%, #f8f0e6 46%, #eef5f2 100%);
+        radial-gradient(circle at 12% 8%, rgba(74, 123, 180, 0.11), transparent 28%),
+        radial-gradient(circle at 88% 10%, rgba(40, 125, 120, 0.10), transparent 28%),
+        radial-gradient(circle at 80% 74%, rgba(201, 106, 78, 0.10), transparent 26%),
+        linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 46%, var(--bg-3) 100%);
       min-height: 100vh;
     }
 
@@ -58,12 +62,12 @@
       position: fixed;
       inset: 0;
       pointer-events: none;
-      opacity: 0.08;
+      opacity: 0.06;
       background-image:
-        linear-gradient(90deg, rgba(21,21,21,0.08) 1px, transparent 1px),
-        linear-gradient(rgba(21,21,21,0.06) 1px, transparent 1px);
-      background-size: 48px 48px;
-      mask-image: linear-gradient(to bottom, black, transparent 68%);
+        linear-gradient(90deg, rgba(23, 25, 29, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(23, 25, 29, 0.06) 1px, transparent 1px);
+      background-size: 46px 46px;
+      mask-image: linear-gradient(to bottom, black, transparent 72%);
     }
 
     button,
@@ -89,56 +93,56 @@
     .topbar {
       position: sticky;
       top: 0;
-      z-index: 80;
+      z-index: 90;
       backdrop-filter: blur(18px);
-      background: rgba(251, 244, 232, 0.82);
-      border-bottom: 1px solid rgba(21,21,21,0.08);
+      background: rgba(246, 248, 251, 0.82);
+      border-bottom: 1px solid rgba(23, 25, 29, 0.07);
     }
 
     .topbar-inner {
-      min-height: 66px;
+      min-height: 68px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 14px;
+      gap: 16px;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 11px;
+      gap: 12px;
       min-width: 0;
     }
 
     .brand-mark {
-      width: 38px;
-      height: 38px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       background:
-        radial-gradient(circle, var(--cream) 0 17%, #151515 18% 33%, transparent 34%),
-        repeating-radial-gradient(circle, #151515 0 4px, #323232 5px 7px);
+        radial-gradient(circle, #fafcff 0 16%, #17191d 17% 31%, transparent 32%),
+        repeating-radial-gradient(circle, #17191d 0 4px, #363b44 5px 7px);
       flex: 0 0 auto;
+      box-shadow: 0 6px 18px rgba(23, 25, 29, 0.15);
     }
 
     .brand-name {
       font-weight: 950;
-      letter-spacing: -0.035em;
+      letter-spacing: -0.04em;
       font-size: 18px;
       white-space: nowrap;
     }
 
     .brand-sub {
-      color: var(--muted);
-      font-weight: 780;
       font-size: 12px;
-      margin-top: 1px;
+      color: var(--text-muted);
+      font-weight: 760;
+      margin-top: 2px;
     }
 
     .top-actions {
       display: flex;
       align-items: center;
-      justify-content: flex-end;
-      gap: 9px;
+      gap: 10px;
       flex-wrap: wrap;
     }
 
@@ -147,32 +151,37 @@
       border-radius: 999px;
       padding: 11px 15px;
       font-weight: 900;
-      background: var(--ink);
-      color: white;
+      line-height: 1;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
       text-decoration: none;
-      box-shadow: 0 7px 0 rgba(21,21,21,0.10);
-      line-height: 1;
+    }
+
+    .btn.dark {
+      background: var(--ink);
+      color: white;
+      box-shadow: 0 8px 18px rgba(23, 25, 29, 0.14);
     }
 
     .btn.light {
-      background: rgba(255,255,255,0.80);
+      background: rgba(255, 255, 255, 0.80);
       color: var(--ink);
       border: 1px solid var(--line);
       box-shadow: none;
     }
 
-    .btn.mustard {
-      background: var(--mustard);
-      color: var(--ink);
+    .btn.primary {
+      background: var(--navy);
+      color: white;
+      box-shadow: 0 8px 18px rgba(40, 75, 114, 0.18);
     }
 
-    .btn.rose {
-      background: var(--rose);
+    .btn.accent {
+      background: linear-gradient(135deg, var(--teal), var(--blue));
       color: white;
+      box-shadow: 0 8px 18px rgba(40, 125, 120, 0.18);
     }
 
     .btn.small {
@@ -182,50 +191,50 @@
     }
 
     .hero {
-      padding: 28px 0 12px;
+      padding: 30px 0 10px;
     }
 
-    .hero-grid {
+    .hero-shell {
       display: grid;
-      grid-template-columns: 0.92fr 1.08fr;
+      grid-template-columns: 1.02fr 0.98fr;
       gap: 22px;
       align-items: stretch;
     }
 
-    .hero-copy {
-      min-height: 395px;
+    .hero-left {
       border-radius: var(--radius-xl);
-      padding: clamp(28px, 5vw, 52px);
+      padding: clamp(28px, 4vw, 48px);
+      min-height: 420px;
       background:
-        linear-gradient(145deg, rgba(255,255,255,0.86), rgba(255,248,235,0.80)),
-        radial-gradient(circle at 88% 8%, rgba(201,107,58,0.13), transparent 26%);
-      border: 1px solid rgba(255,255,255,0.88);
+        linear-gradient(145deg, rgba(255,255,255,0.86), rgba(255,255,255,0.64)),
+        radial-gradient(circle at 82% 12%, rgba(74,123,180,0.12), transparent 26%);
+      border: 1px solid rgba(255,255,255,0.95);
       box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      overflow: hidden;
-      position: relative;
     }
 
-    .hero-copy::after {
+    .hero-left::after {
       content: "";
       position: absolute;
       right: -90px;
-      top: -90px;
+      bottom: -90px;
       width: 250px;
       height: 250px;
       border-radius: 50%;
-      background: conic-gradient(var(--terracotta), var(--rose), var(--mustard), var(--teal), var(--terracotta));
-      opacity: 0.12;
+      background: conic-gradient(var(--navy), var(--blue), var(--teal), var(--coral), var(--navy));
+      opacity: 0.10;
     }
 
     .eyebrow {
       width: fit-content;
+      border-radius: 999px;
+      padding: 10px 14px;
       background: var(--ink);
       color: white;
-      border-radius: 999px;
-      padding: 10px 15px;
       font-size: 12px;
       font-weight: 950;
       letter-spacing: 0.08em;
@@ -236,165 +245,55 @@
 
     h1 {
       margin: 20px 0 0;
-      font-size: clamp(43px, 7vw, 82px);
-      line-height: 0.91;
-      letter-spacing: -0.07em;
+      line-height: 0.9;
+      letter-spacing: -0.075em;
       position: relative;
       z-index: 1;
     }
 
-    .colour-title {
-      display: inline-block;
-      font-size: 0.965em;
-      background: linear-gradient(90deg, var(--terracotta), var(--rose), var(--blue), var(--teal));
+    .hero-main {
+      display: block;
+      font-size: clamp(42px, 7vw, 82px);
+      color: var(--ink);
+    }
+
+    .hero-sub {
+      display: block;
+      margin-top: 4px;
+      font-size: clamp(31px, 5.3vw, 58px);
+      letter-spacing: -0.06em;
+      background: linear-gradient(90deg, var(--navy), var(--teal), var(--blue));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      padding-right: 0.04em;
+      padding-right: 0.06em;
     }
 
-    .hero-copy p {
+    .hero-left p {
+      max-width: 640px;
       margin: 20px 0 0;
-      max-width: 630px;
-      color: #40372f;
-      font-size: clamp(16px, 1.75vw, 19px);
-      line-height: 1.55;
-      font-weight: 650;
+      font-size: clamp(16px, 1.7vw, 19px);
+      line-height: 1.58;
+      color: #3f4650;
+      font-weight: 620;
       position: relative;
       z-index: 1;
     }
 
     .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
       margin-top: 28px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-visual {
-      min-height: 395px;
-      border-radius: var(--radius-xl);
-      background:
-        linear-gradient(145deg, rgba(21,21,21,0.96), rgba(46,36,28,0.94)),
-        radial-gradient(circle at 80% 10%, rgba(233,191,69,0.13), transparent 28%);
-      box-shadow: var(--shadow);
-      padding: 18px;
-      position: relative;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.18);
-    }
-
-    .hero-visual::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 20% 80%, rgba(76,131,168,0.13), transparent 30%),
-        radial-gradient(circle at 88% 18%, rgba(201,107,58,0.13), transparent 26%);
-      pointer-events: none;
-    }
-
-    .shop-sign {
-      position: relative;
-      z-index: 1;
-      color: white;
       display: flex;
-      justify-content: space-between;
-      gap: 14px;
-      align-items: center;
-      margin-bottom: 16px;
-    }
-
-    .shop-sign strong {
-      font-size: 15px;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-
-    .shop-sign span {
-      color: rgba(255,255,255,0.66);
-      font-size: 13px;
-      font-weight: 800;
-    }
-
-    .cover-wall {
+      gap: 10px;
+      flex-wrap: wrap;
       position: relative;
       z-index: 1;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-
-    .hero-cover {
-      border: 0;
-      aspect-ratio: 1 / 1;
-      border-radius: 18px;
-      padding: 13px;
-      color: white;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-shadow: 0 18px 42px rgba(0,0,0,0.22);
-      transform: rotate(var(--tilt, 0deg));
-      background: var(--cover-bg);
-      background-size: cover;
-      background-position: center;
-      text-align: left;
-    }
-
-    .hero-cover::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.08), rgba(0,0,0,0.54));
-    }
-
-    .hero-cover.no-image::after {
-      content: "";
-      position: absolute;
-      width: 108px;
-      height: 108px;
-      border-radius: 50%;
-      right: -26px;
-      bottom: -30px;
-      background:
-        radial-gradient(circle, rgba(255,255,255,0.86) 0 13%, #151515 14% 29%, transparent 30%),
-        repeating-radial-gradient(circle, #151515 0 4px, #303030 5px 7px);
-      opacity: 0.92;
-    }
-
-    .hero-cover strong,
-    .hero-cover span {
-      position: relative;
-      z-index: 1;
-      text-shadow: 0 2px 12px rgba(0,0,0,0.28);
-    }
-
-    .hero-cover strong {
-      font-size: clamp(12px, 1.4vw, 17px);
-      line-height: 1;
-      text-transform: uppercase;
-      letter-spacing: -0.035em;
-      font-weight: 950;
-    }
-
-    .hero-cover span {
-      font-size: 12px;
-      line-height: 1.15;
-      font-weight: 850;
-      opacity: 0.88;
-      max-width: 84%;
     }
 
     .quick-search {
+      margin-top: 18px;
       display: flex;
       gap: 9px;
       flex-wrap: wrap;
-      margin-top: 16px;
       position: relative;
       z-index: 1;
     }
@@ -405,43 +304,187 @@
       padding: 10px 14px;
       font-weight: 900;
       color: var(--ink);
-      background: rgba(255,255,255,0.78);
-      box-shadow: 0 8px 20px rgba(21,21,21,0.08);
+      background: rgba(255,255,255,0.88);
+      box-shadow: 0 8px 20px rgba(23, 25, 29, 0.06);
     }
 
-    .chip:nth-child(1) { background: #f5e5a0; }
-    .chip:nth-child(2) { background: #ead0da; }
-    .chip:nth-child(3) { background: #d7e7dc; }
-    .chip:nth-child(4) { background: #d7e1ea; }
-    .chip:nth-child(5) { background: #ead8c7; }
-    .chip:nth-child(6) { background: #e3d9ea; }
+    .chip:nth-child(1) { background: #dfe8f5; }
+    .chip:nth-child(2) { background: #e0f1ee; }
+    .chip:nth-child(3) { background: #ece7fa; }
+    .chip:nth-child(4) { background: #f4ead9; }
+    .chip:nth-child(5) { background: #f6e2de; }
+    .chip:nth-child(6) { background: #e3f0ea; }
+
+    .hero-right {
+      display: grid;
+      gap: 16px;
+    }
+
+    .hero-visual {
+      border-radius: var(--radius-xl);
+      min-height: 270px;
+      padding: 18px;
+      background:
+        linear-gradient(145deg, rgba(23,25,29,0.96), rgba(34,42,53,0.94));
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,0.12);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-visual::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 16% 80%, rgba(74,123,180,0.18), transparent 28%),
+        radial-gradient(circle at 82% 16%, rgba(40,125,120,0.18), transparent 30%);
+      pointer-events: none;
+    }
+
+    .hero-visual-head {
+      position: relative;
+      z-index: 1;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      gap: 12px;
+    }
+
+    .hero-visual-head strong {
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .hero-visual-head span {
+      font-size: 12px;
+      color: rgba(255,255,255,0.68);
+      font-weight: 800;
+    }
+
+    .cover-wall {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .hero-cover {
+      border: 0;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 20px;
+      overflow: hidden;
+      padding: 14px;
+      color: white;
+      text-align: left;
+      position: relative;
+      background: var(--cover-bg);
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 18px 42px rgba(0,0,0,0.20);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transform: rotate(var(--tilt, 0deg));
+    }
+
+    .hero-cover::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.10), rgba(0,0,0,0.55));
+    }
+
+    .hero-cover.no-image::after {
+      content: "";
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      right: -24px;
+      bottom: -28px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, rgba(255,255,255,0.88) 0 13%, #17191d 14% 29%, transparent 30%),
+        repeating-radial-gradient(circle, #17191d 0 4px, #333840 5px 7px);
+      opacity: 0.92;
+    }
+
+    .hero-cover strong,
+    .hero-cover span {
+      position: relative;
+      z-index: 1;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.30);
+    }
+
+    .hero-cover strong {
+      font-size: 16px;
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+    }
+
+    .hero-cover span {
+      font-size: 12px;
+      line-height: 1.15;
+      font-weight: 850;
+      opacity: 0.9;
+      max-width: 86%;
+    }
+
+    .hero-side-panel {
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      background: var(--panel);
+      border: 1px solid rgba(255,255,255,0.9);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero-side-panel h3 {
+      margin: 0;
+      font-size: 20px;
+      letter-spacing: -0.04em;
+    }
+
+    .hero-side-panel p {
+      margin: 6px 0 0;
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.45;
+      font-weight: 760;
+    }
 
     .stats-strip {
+      margin-top: 20px;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 12px;
-      margin: 14px 0 18px;
     }
 
     .stat {
-      border-radius: 22px;
+      border-radius: 20px;
       padding: 15px 16px;
-      background: rgba(255,255,255,0.68);
-      border: 1px solid rgba(255,255,255,0.84);
+      background: var(--panel);
+      border: 1px solid rgba(255,255,255,0.92);
       box-shadow: var(--shadow-soft);
     }
 
     .stat-label {
-      color: var(--muted);
       font-size: 11px;
       font-weight: 950;
       letter-spacing: 0.08em;
       text-transform: uppercase;
+      color: var(--text-muted);
     }
 
     .stat-value {
       margin-top: 7px;
-      font-size: 26px;
+      font-size: 27px;
       font-weight: 950;
       letter-spacing: -0.055em;
       white-space: nowrap;
@@ -451,13 +494,17 @@
 
     .stat-note {
       margin-top: 2px;
-      color: var(--muted);
       font-size: 13px;
-      font-weight: 800;
+      font-weight: 780;
+      color: var(--text-muted);
+    }
+
+    .section {
+      margin-top: 28px;
     }
 
     .section-head {
-      margin: 30px 0 14px;
+      margin-bottom: 14px;
       display: flex;
       align-items: end;
       justify-content: space-between;
@@ -474,7 +521,7 @@
     .section-head p {
       margin: 0;
       max-width: 520px;
-      color: var(--muted);
+      color: var(--text-muted);
       font-weight: 800;
       line-height: 1.42;
     }
@@ -483,15 +530,14 @@
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
-      margin-bottom: 18px;
     }
 
     .genre-pill-button {
-      border: 1px solid rgba(21,21,21,0.08);
+      border: 1px solid rgba(23,25,29,0.08);
       border-radius: 999px;
       padding: 11px 15px;
       color: var(--ink);
-      background: rgba(255,255,255,0.72);
+      background: var(--panel-strong);
       font-weight: 950;
       box-shadow: var(--shadow-soft);
       transition: transform 0.16s ease, background 0.16s ease;
@@ -502,19 +548,18 @@
       background: white;
     }
 
-    .feature-row {
+    .feature-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 14px;
-      margin-bottom: 18px;
     }
 
     .feature-card {
-      border: 1px solid rgba(255,255,255,0.9);
-      background: rgba(255,255,255,0.68);
-      border-radius: 26px;
-      box-shadow: var(--shadow-soft);
+      border-radius: 24px;
       overflow: hidden;
+      background: var(--panel);
+      border: 1px solid rgba(255,255,255,0.92);
+      box-shadow: var(--shadow-soft);
       transition: transform 0.16s ease, box-shadow 0.16s ease;
     }
 
@@ -524,20 +569,20 @@
     }
 
     .feature-cover {
+      width: 100%;
+      border: 0;
       aspect-ratio: 1 / 1;
       padding: 16px;
+      text-align: left;
       color: white;
+      position: relative;
+      overflow: hidden;
       background: var(--cover-bg);
       background-size: cover;
       background-position: center;
-      position: relative;
-      overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      border: 0;
-      width: 100%;
-      text-align: left;
     }
 
     .feature-cover::before {
@@ -552,34 +597,34 @@
       position: absolute;
       width: 55%;
       aspect-ratio: 1 / 1;
-      border-radius: 50%;
       right: -14%;
       bottom: -16%;
+      border-radius: 50%;
       background:
-        radial-gradient(circle, rgba(255,255,255,0.86) 0 13%, #151515 14% 29%, transparent 30%),
-        repeating-radial-gradient(circle, #151515 0 4px, #303030 5px 7px);
+        radial-gradient(circle, rgba(255,255,255,0.88) 0 13%, #17191d 14% 29%, transparent 30%),
+        repeating-radial-gradient(circle, #17191d 0 4px, #333840 5px 7px);
     }
 
     .feature-cover strong,
     .feature-cover span {
       position: relative;
       z-index: 1;
-      text-shadow: 0 2px 14px rgba(0,0,0,0.26);
+      text-shadow: 0 2px 14px rgba(0,0,0,0.28);
     }
 
     .feature-cover strong {
-      font-size: 22px;
-      font-weight: 950;
+      font-size: 21px;
       line-height: 0.98;
-      letter-spacing: -0.055em;
+      font-weight: 950;
+      letter-spacing: -0.05em;
       text-transform: uppercase;
     }
 
     .feature-cover span {
-      font-weight: 850;
+      font-weight: 840;
+      font-size: 13px;
       line-height: 1.15;
-      max-width: 84%;
-      opacity: 0.9;
+      max-width: 86%;
     }
 
     .feature-body {
@@ -589,19 +634,21 @@
     .feature-body h3 {
       margin: 0;
       font-size: 18px;
-      line-height: 1.12;
+      line-height: 1.1;
       letter-spacing: -0.035em;
     }
 
     .feature-body p {
       margin: 6px 0 0;
-      color: var(--muted);
+      color: var(--text-muted);
       font-size: 14px;
       line-height: 1.32;
       font-weight: 780;
     }
 
-    .feature-actions {
+    .feature-actions,
+    .card-actions,
+    .drawer-actions {
       display: flex;
       gap: 8px;
       flex-wrap: wrap;
@@ -609,10 +656,10 @@
     }
 
     .catalogue-head {
-      margin-top: 24px;
-      border-radius: 28px;
-      background: rgba(255,255,255,0.68);
-      border: 1px solid rgba(255,255,255,0.86);
+      margin-top: 28px;
+      border-radius: 26px;
+      background: var(--panel);
+      border: 1px solid rgba(255,255,255,0.92);
       box-shadow: var(--shadow-soft);
       padding: 14px;
     }
@@ -628,8 +675,8 @@
     .catalogue-left,
     .catalogue-actions {
       display: flex;
-      gap: 10px;
       align-items: center;
+      gap: 10px;
       flex-wrap: wrap;
     }
 
@@ -651,7 +698,7 @@
     .active-search {
       display: none;
       margin-top: 10px;
-      color: var(--muted);
+      color: var(--text-muted);
       font-size: 14px;
       font-weight: 850;
     }
@@ -663,8 +710,8 @@
     .wishlist-panel {
       display: none;
       margin-top: 16px;
-      border-radius: 28px;
-      background: rgba(21,21,21,0.94);
+      border-radius: 24px;
+      background: rgba(23,25,29,0.95);
       color: white;
       padding: 20px;
       box-shadow: var(--shadow);
@@ -682,7 +729,7 @@
 
     .wishlist-panel p {
       margin: 0 0 14px;
-      color: rgba(255,255,255,0.72);
+      color: rgba(255,255,255,0.70);
       font-weight: 750;
     }
 
@@ -725,9 +772,9 @@
     }
 
     .record {
-      background: rgba(255,255,255,0.72);
-      border: 1px solid rgba(255,255,255,0.9);
-      border-radius: 26px;
+      background: var(--panel);
+      border: 1px solid rgba(255,255,255,0.92);
+      border-radius: 24px;
       box-shadow: var(--shadow-soft);
       overflow: hidden;
       transition: transform 0.16s ease, box-shadow 0.16s ease;
@@ -742,20 +789,20 @@
     }
 
     .record-cover {
-      aspect-ratio: 1 / 1;
       width: 100%;
+      border: 0;
+      aspect-ratio: 1 / 1;
       padding: 17px;
+      text-align: left;
       color: white;
+      position: relative;
+      overflow: hidden;
       background: var(--cover-bg);
       background-size: cover;
       background-position: center;
-      position: relative;
-      overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      border: 0;
-      text-align: left;
     }
 
     .record-cover::before {
@@ -770,12 +817,12 @@
       position: absolute;
       width: 56%;
       aspect-ratio: 1 / 1;
-      border-radius: 50%;
       right: -15%;
       bottom: -16%;
+      border-radius: 50%;
       background:
-        radial-gradient(circle, rgba(255,255,255,0.86) 0 13%, #151515 14% 29%, transparent 30%),
-        repeating-radial-gradient(circle, #151515 0 4px, #303030 5px 7px);
+        radial-gradient(circle, rgba(255,255,255,0.88) 0 13%, #17191d 14% 29%, transparent 30%),
+        repeating-radial-gradient(circle, #17191d 0 4px, #333840 5px 7px);
       opacity: 0.96;
     }
 
@@ -830,7 +877,7 @@
 
     .album-name {
       margin-top: 6px;
-      color: var(--wine);
+      color: var(--navy);
       font-weight: 900;
       line-height: 1.22;
     }
@@ -845,7 +892,7 @@
     .tag {
       border-radius: 999px;
       padding: 7px 10px;
-      background: rgba(21,21,21,0.07);
+      background: rgba(23,25,29,0.07);
       color: var(--ink);
       font-size: 11px;
       font-weight: 950;
@@ -859,28 +906,21 @@
 
     .card-summary {
       margin-top: auto;
+      padding-top: 11px;
+      border-top: 1px solid var(--line);
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 10px;
-      color: var(--muted);
+      color: var(--text-muted);
       font-size: 14px;
       font-weight: 850;
-      border-top: 1px solid var(--line);
-      padding-top: 11px;
     }
 
     .price {
-      color: #0f766e;
+      color: var(--teal);
       font-weight: 950;
       white-space: nowrap;
-    }
-
-    .card-actions {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-top: 12px;
     }
 
     .card-btn {
@@ -894,8 +934,9 @@
     }
 
     .card-btn.light {
-      background: var(--mustard);
+      background: rgba(255,255,255,0.82);
       color: var(--ink);
+      border: 1px solid var(--line);
     }
 
     .card-btn.saved {
@@ -923,17 +964,17 @@
       grid-column: 1 / -1;
       text-align: center;
       padding: 62px 20px;
-      color: var(--muted);
-      background: rgba(255,255,255,0.64);
-      border: 1px dashed rgba(21,21,21,0.20);
-      border-radius: 28px;
+      color: var(--text-muted);
+      background: rgba(255,255,255,0.72);
+      border: 1px dashed rgba(23,25,29,0.18);
+      border-radius: 24px;
       font-weight: 900;
     }
 
     .drawer-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(21,21,21,0.34);
+      background: rgba(23,25,29,0.34);
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.2s ease;
@@ -951,10 +992,10 @@
       right: 0;
       width: min(440px, 94vw);
       height: 100vh;
-      background: rgba(255,253,247,0.96);
+      background: rgba(249, 251, 253, 0.96);
       backdrop-filter: blur(18px);
       z-index: 110;
-      box-shadow: -24px 0 80px rgba(0,0,0,0.20);
+      box-shadow: -24px 0 80px rgba(0,0,0,0.18);
       transform: translateX(105%);
       transition: transform 0.25s ease;
       padding: 22px;
@@ -996,7 +1037,7 @@
     .drawer-section label {
       display: block;
       margin-bottom: 8px;
-      color: var(--muted);
+      color: var(--text-muted);
       font-size: 12px;
       font-weight: 950;
       letter-spacing: 0.08em;
@@ -1016,15 +1057,8 @@
 
     .drawer input:focus,
     .drawer select:focus {
-      border-color: var(--rose);
-      box-shadow: 0 0 0 4px rgba(201,87,125,0.12);
-    }
-
-    .drawer-actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 18px;
+      border-color: var(--blue);
+      box-shadow: 0 0 0 4px rgba(74,123,180,0.12);
     }
 
     .modal {
@@ -1045,7 +1079,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(21,21,21,0.44);
+      background: rgba(23,25,29,0.42);
       backdrop-filter: blur(6px);
     }
 
@@ -1055,9 +1089,9 @@
       overflow-y: auto;
       position: relative;
       z-index: 1;
-      background: rgba(255,253,247,0.96);
-      border-radius: 34px;
-      box-shadow: 0 30px 100px rgba(0,0,0,0.28);
+      background: rgba(249, 251, 253, 0.97);
+      border-radius: 32px;
+      box-shadow: 0 30px 100px rgba(0,0,0,0.26);
       padding: 18px;
       display: grid;
       grid-template-columns: 0.9fr 1.1fr;
@@ -1091,12 +1125,12 @@
       position: absolute;
       width: 55%;
       aspect-ratio: 1 / 1;
-      border-radius: 50%;
       right: -13%;
       bottom: -15%;
+      border-radius: 50%;
       background:
-        radial-gradient(circle, rgba(255,255,255,0.86) 0 13%, #151515 14% 29%, transparent 30%),
-        repeating-radial-gradient(circle, #151515 0 4px, #303030 5px 7px);
+        radial-gradient(circle, rgba(255,255,255,0.88) 0 13%, #17191d 14% 29%, transparent 30%),
+        repeating-radial-gradient(circle, #17191d 0 4px, #333840 5px 7px);
     }
 
     .modal-info {
@@ -1112,7 +1146,7 @@
 
     .modal-album {
       margin-top: 10px;
-      color: var(--wine);
+      color: var(--navy);
       font-size: 22px;
       font-weight: 950;
       line-height: 1.1;
@@ -1130,7 +1164,7 @@
       gap: 14px;
       border-top: 1px solid var(--line);
       padding-top: 9px;
-      color: var(--muted);
+      color: var(--text-muted);
       font-weight: 800;
     }
 
@@ -1164,7 +1198,7 @@
       border: 0;
       border-radius: 999px;
       padding: 12px 15px;
-      background: rgba(255,255,255,0.88);
+      background: rgba(255,255,255,0.90);
       color: var(--ink);
       border: 1px solid var(--line);
       box-shadow: var(--shadow-soft);
@@ -1178,23 +1212,23 @@
 
     footer {
       padding: 42px 0;
-      color: var(--muted);
+      color: var(--text-muted);
       text-align: center;
       font-weight: 800;
     }
 
-    @media (max-width: 1080px) {
-      .hero-grid {
+    @media (max-width: 1100px) {
+      .hero-shell {
         grid-template-columns: 1fr;
       }
 
-      .hero-copy,
+      .hero-left,
       .hero-visual {
         min-height: auto;
       }
 
       .stats-strip,
-      .feature-row {
+      .feature-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
@@ -1208,10 +1242,6 @@
         width: min(100% - 28px, var(--max));
       }
 
-      .topbar-inner {
-        min-height: 62px;
-      }
-
       .brand-sub,
       .top-actions .btn.light {
         display: none;
@@ -1221,20 +1251,17 @@
         font-size: 16px;
       }
 
-      h1 {
-        letter-spacing: -0.058em;
+      .hero-main {
+        font-size: clamp(38px, 11vw, 58px);
       }
 
-      .cover-wall {
-        grid-template-columns: repeat(2, 1fr);
+      .hero-sub {
+        font-size: clamp(28px, 8.8vw, 44px);
       }
 
-      .hero-cover:nth-child(n+5) {
-        display: none;
-      }
-
+      .cover-wall,
       .stats-strip,
-      .feature-row {
+      .feature-grid {
         grid-template-columns: 1fr;
       }
 
@@ -1268,10 +1295,6 @@
         left: 14px;
         right: 14px;
         justify-content: center;
-      }
-
-      .back-top {
-        bottom: 74px;
       }
     }
   </style>
@@ -1344,7 +1367,7 @@
     </div>
 
     <div class="drawer-actions">
-      <button class="btn mustard" id="applyFiltersButton" type="button">Show records</button>
+      <button class="btn primary" id="applyFiltersButton" type="button">Show records</button>
       <button class="btn light" id="resetButton" type="button">Reset</button>
     </div>
   </aside>
@@ -1367,7 +1390,7 @@
 
           <div class="top-actions">
             <button class="btn light small" id="wishlistToggleTop" type="button">Shortlist</button>
-            <button class="btn mustard small" id="openFiltersButtonTop" type="button">Search</button>
+            <button class="btn primary small" id="openFiltersButtonTop" type="button">Search</button>
           </div>
         </div>
       </div>
@@ -1375,18 +1398,23 @@
 
     <header class="hero">
       <div class="container">
-        <div class="hero-grid">
-          <section class="hero-copy">
-            <div class="eyebrow">Vintage vinyl catalogue</div>
-            <h1>FatzGonzalez <span class="colour-title">Vinyl Store</span></h1>
+        <div class="hero-shell">
+          <section class="hero-left">
+            <div class="eyebrow">Live catalogue</div>
+
+            <h1>
+              <span class="hero-main">FatzGonzalez</span>
+              <span class="hero-sub">Vinyl Store</span>
+            </h1>
+
             <p>
               Browse vintage records, Brazilian classics, blues, rock, jazz and collector pieces.
-              A clean catalogue built for digging, discovering and saving favourites.
+              A cleaner, more modern catalogue built for discovering albums and saving favourites.
             </p>
 
             <div class="hero-actions">
-              <a class="btn mustard" href="#catalogue">Browse records</a>
-              <button class="btn rose" id="surpriseButton" type="button">Surprise me</button>
+              <a class="btn primary" href="#catalogue">Browse records</a>
+              <button class="btn accent" id="surpriseButton" type="button">Surprise me</button>
               <button class="btn light" id="openFiltersButtonHero" type="button">Search catalogue</button>
             </div>
 
@@ -1400,13 +1428,22 @@
             </div>
           </section>
 
-          <aside class="hero-visual" aria-label="Featured records from the catalogue">
-            <div class="shop-sign">
-              <strong>Featured records</strong>
-              <span>Live from the catalogue</span>
+          <div class="hero-right">
+            <aside class="hero-visual" aria-label="Featured records from the catalogue">
+              <div class="hero-visual-head">
+                <strong>Featured records</strong>
+                <span>Live from the spreadsheet</span>
+              </div>
+              <div class="cover-wall" id="heroCoverWall"></div>
+            </aside>
+
+            <div class="hero-side-panel">
+              <h3>Built for browsing</h3>
+              <p>
+                Search by artist, album, genre, condition, origin or price. Click any record to open the full details and save it to your shortlist.
+              </p>
             </div>
-            <div class="cover-wall" id="heroCoverWall"></div>
-          </aside>
+          </div>
         </div>
 
         <section class="stats-strip" aria-label="Catalogue highlights">
@@ -1439,7 +1476,7 @@
 
     <main>
       <div class="container">
-        <section>
+        <section class="section">
           <div class="section-head">
             <h2>Browse by genre</h2>
             <p>Start with the strongest styles in the collection.</p>
@@ -1447,20 +1484,20 @@
           <div class="genre-row" id="topGenres"></div>
         </section>
 
-        <section>
+        <section class="section">
           <div class="section-head">
-            <h2>Collector picks</h2>
-            <p>Featured pieces selected automatically from higher-interest records.</p>
+            <h2>Highlighted records</h2>
+            <p>Featured pieces selected automatically from higher-value or more interesting items.</p>
           </div>
-          <div class="feature-row" id="collectorPicks"></div>
+          <div class="feature-grid" id="collectorPicks"></div>
         </section>
 
-        <section>
+        <section class="section">
           <div class="section-head">
-            <h2>Recently added</h2>
+            <h2>Latest arrivals</h2>
             <p>Records near the end of the spreadsheet, useful as new stock is added.</p>
           </div>
-          <div class="feature-row" id="recentlyAdded"></div>
+          <div class="feature-grid" id="recentlyAdded"></div>
         </section>
 
         <section class="catalogue-head">
@@ -1472,7 +1509,7 @@
 
             <div class="catalogue-actions">
               <button class="btn light small" id="wishlistToggle" type="button">My shortlist</button>
-              <button class="btn mustard small" id="openFiltersButton" type="button">Search & filters</button>
+              <button class="btn primary small" id="openFiltersButton" type="button">Search & filters</button>
             </div>
           </div>
 
@@ -1483,7 +1520,7 @@
             <p>Records saved while browsing. This list is stored only on this browser.</p>
             <div class="wishlist-list" id="wishlistList"></div>
             <div class="drawer-actions">
-              <button class="btn mustard small" id="copyWishlistButton" type="button">Copy shortlist text</button>
+              <button class="btn primary small" id="copyWishlistButton" type="button">Copy shortlist text</button>
               <button class="btn light small" id="clearWishlistButton" type="button">Clear shortlist</button>
             </div>
           </section>
@@ -1542,14 +1579,14 @@
     const modalCard = document.getElementById("modalCard");
 
     const colourPairs = [
-      ["#c96b3a", "#c9577d"],
-      ["#4c83a8", "#287d78"],
-      ["#e9bf45", "#8b6fb7"],
-      ["#c9577d", "#d99248"],
-      ["#287d78", "#4c83a8"],
-      ["#151515", "#645142"],
-      ["#5c3a24", "#c8794f"],
-      ["#789b75", "#e9bf45"]
+      ["#284b72", "#4a7bb4"],
+      ["#287d78", "#4a7bb4"],
+      ["#d7ab45", "#c96a4e"],
+      ["#b85b7b", "#4a7bb4"],
+      ["#7e9f84", "#287d78"],
+      ["#17191d", "#3b4652"],
+      ["#36566f", "#287d78"],
+      ["#7c5a4c", "#b85b7b"]
     ];
 
     function parseCSV(text) {
@@ -1656,9 +1693,7 @@
       const text = String(url).trim();
 
       if (!/^https?:\/\//i.test(text)) return false;
-
       if (/\.(jpg|jpeg|png|webp|gif)(\?.*)?$/i.test(text)) return true;
-
       if (text.includes("is1-ssl.mzstatic.com")) return true;
       if (text.includes("e-cdns-images.dzcdn.net")) return true;
       if (text.includes("coverartarchive.org")) return true;
@@ -1735,7 +1770,6 @@
 
     function getGenreCounts() {
       const counts = {};
-
       records.forEach(item => {
         if (!item.genre) return;
         counts[item.genre] = (counts[item.genre] || 0) + 1;
@@ -1765,7 +1799,7 @@
     function renderTopGenres() {
       topGenres.innerHTML = "";
 
-      getGenreCounts().slice(0, 9).forEach(item => {
+      getGenreCounts().slice(0, 10).forEach(item => {
         const button = document.createElement("button");
         button.className = "genre-pill-button";
         button.textContent = `${item.genre} · ${item.count}`;
@@ -1788,22 +1822,22 @@
       const candidates = records
         .filter(item => item.artist && item.album)
         .sort(() => Math.random() - 0.5)
-        .slice(0, 9);
+        .slice(0, 4);
 
       candidates.forEach((item, index) => {
         const card = document.createElement("button");
         card.className = "hero-cover";
         card.type = "button";
-        card.style.setProperty("--tilt", `${[-2, 1, -1, 2, 0, -2, 1, -1, 2][index] || 0}deg`);
+        card.style.setProperty("--tilt", `${[-2, 1, 1, -1][index] || 0}deg`);
 
-        if (!isUsableImageUrl(item.artwork)) card.classList.add("no-image");
-        if (isUsableImageUrl(item.artwork)) {
+        if (!isUsableImageUrl(item.artwork)) {
+          card.classList.add("no-image");
+          card.style.setProperty("--cover-bg", coverBackground(item));
+          card.style.background = coverBackground(item);
+        } else {
           card.style.backgroundImage = `linear-gradient(to bottom, rgba(0,0,0,0.10), rgba(0,0,0,0.58)), url("${item.artwork}")`;
           card.style.backgroundSize = "cover";
           card.style.backgroundPosition = "center";
-        } else {
-          card.style.setProperty("--cover-bg", coverBackground(item));
-          card.style.background = coverBackground(item);
         }
 
         card.innerHTML = `
@@ -1849,7 +1883,6 @@
 
       card.appendChild(cover);
       card.appendChild(body);
-
       return card;
     }
 
@@ -2006,7 +2039,6 @@
       });
 
       bindDynamicButtons();
-
       loadMoreButton.style.display = filtered.length > visibleCount ? "inline-flex" : "none";
       loadMoreButton.textContent = `Show more records (${Math.min(visibleCount, filtered.length)} of ${filtered.length})`;
 
@@ -2115,7 +2147,7 @@
           </div>
 
           <div class="drawer-actions">
-            <button class="btn ${saved ? "rose" : "mustard"}" id="modalWishlistButton" type="button">
+            <button class="btn ${saved ? "accent" : "primary"}" id="modalWishlistButton" type="button">
               ${saved ? "Saved ❤️" : "Add to shortlist"}
             </button>
             <button class="btn light" id="modalArtistButton" type="button">More by this artist</button>
@@ -2171,7 +2203,6 @@
 
     function surpriseMe() {
       if (records.length === 0) return;
-
       const randomRecord = records[Math.floor(Math.random() * records.length)];
       openRecordModal(randomRecord.id);
     }
@@ -2192,9 +2223,7 @@
           cache: "no-store"
         });
 
-        if (!response.ok) {
-          throw new Error("Could not fetch the CSV file.");
-        }
+        if (!response.ok) throw new Error("Could not fetch the CSV file.");
 
         const csvText = await response.text();
         const rows = parseCSV(csvText);
@@ -2204,9 +2233,7 @@
           return normalisedRow.includes("artista") && normalisedRow.includes("album");
         });
 
-        if (headerRowIndex === -1) {
-          throw new Error("Could not find the spreadsheet header row.");
-        }
+        if (headerRowIndex === -1) throw new Error("Could not find the spreadsheet header row.");
 
         const headers = rows[headerRowIndex].map(normaliseKey);
 
@@ -2228,7 +2255,6 @@
         renderRecentlyAdded();
         renderWishlist();
         renderCatalogue();
-
       } catch (error) {
         console.error(error);
         totalRecords.textContent = "Catalogue not loaded";
@@ -2262,7 +2288,6 @@
     overlay.addEventListener("click", closeDrawer);
 
     document.getElementById("resetButton").addEventListener("click", () => resetFilters(true));
-
     document.getElementById("surpriseButton").addEventListener("click", surpriseMe);
 
     document.querySelectorAll("#wishlistToggle, #wishlistToggleTop, #floatingShortlistButton").forEach(button => {
