@@ -15,10 +15,18 @@
       background: black;
     }
 
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
     .fullscreen-gif {
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
+      max-width: 100vw;
+      max-height: 100vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
       display: block;
       pointer-events: none;
       user-select: none;
